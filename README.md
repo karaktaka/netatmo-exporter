@@ -3,6 +3,7 @@
 
 Netatmo Weather Station dashboard for Grafana based on Prometheus
 
+![screenshot](./screenshot.png)
 
 ## Installation
 * Create a [Netatmo developer account](https://dev.netatmo.com/apidocumentation) and create an app there.
