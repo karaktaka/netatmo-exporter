@@ -1,0 +1,15 @@
+services:
+  netatmo-exporter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: local/netatmo-exporter
+    restart: unless-stopped
+    environment:
+      - NETATMO_CLIENT_ID=
+      - NETATMO_CLIENT_SECRET=
+      - INTERVAL=600
+      - LOGLEVEL=INFO
+      - LISTEN_PORT=9126
+    volumes:
+      - "./config.yaml:/app/config.yaml:rw"

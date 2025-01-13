@@ -1,0 +1,16 @@
+[project]
+name = "netatmo-exporter"
+version = "x.x.x"
+description = "A basic exporter for netatmo api"
+authors = [{ name = "Dennis Bernardy", email = "bernardyd@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.12"
+packages = [{include = "netatmo-exporter"}]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+target-version = ["py312"]
+line-length = "120"

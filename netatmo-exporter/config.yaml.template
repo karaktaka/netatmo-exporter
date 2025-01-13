@@ -1,0 +1,8 @@
+interval: 10
+loglevel: INFO
+listen_port: 9126
+
+netatmo:
+  client_id: ""
+  client_secret: ""
+  refresh_token: ""

@@ -1,0 +1,25 @@
+name: Lint
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: Lint with flake8
+      uses: py-actions/flake8@v2
+      with:
+        path: "./netatmo-exporter"
+    - name: Lint with black
+      uses: psf/black@stable
+      with:
+        src: "./netatmo-exporter"
