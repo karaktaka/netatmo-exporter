@@ -4,6 +4,7 @@
 import argparse
 import logging
 import signal
+from enum import Enum
 from os import getenv
 from pathlib import Path
 from time import sleep
@@ -15,6 +16,12 @@ from oauthlib.oauth2.rfc6749.errors import InvalidGrantError
 from prometheus_client import start_http_server, Gauge
 from pyatmo import NetatmoOAuth2, WeatherStationData, ApiError
 from requests import ConnectionError
+
+
+class TrendState(Enum):
+    UP = 1
+    DOWN = -1
+    STABLE = 0
 
 
 def parse_config(_config_file=None) -> Tuple[Dict, str]:
@@ -120,24 +127,11 @@ def get_sensor_data(_sensor_data: dict, _station_name: str, _module_name: str, _
             if _sensor in ["time_utc", "date_max_temp", "date_min_temp", "date_max_wind_str"]:
                 continue
             if _sensor in ["temp_trend", "pressure_trend"]:
+                globals()[_sensor.upper()].labels(_station_name, _module_name, _module_type).set(
+                    TrendState[_value.upper()].value
+                )
                 continue
-            if _sensor == "Temperature":
-                globals()[_sensor.upper()].labels(
-                    _station_name, _module_name, _module_type, _sensor_data.get("temp_trend")
-                ).set(check_value(_value))
-                continue
-            if _sensor == "Pressure":
-                globals()[_sensor.upper()].labels(
-                    _station_name, _module_name, _module_type, _sensor_data.get("pressure_trend")
-                ).set(check_value(_value))
-                continue
-            globals()[_sensor.upper()].labels(_station_name, _module_name, _module_type).set(check_value(_value))
-
-
-def check_value(_val: [float | int | str]) -> [float | str]:
-    if type(_val) is int:
-        return float(_val)
-    return _val
+            globals()[_sensor.upper()].labels(_station_name, _module_name, _module_type).set(_value)
 
 
 def shutdown(_signal):
@@ -194,14 +188,14 @@ if __name__ == "__main__":
     STATION_CO2_CALIBRATING = Gauge(
         "netatmo_station_co2_calibrating", "The current CO2 Calibrating Status", ["station", "type"]
     )
-    TEMPERATURE = Gauge(
-        "netatmo_temperature", "The current Temperature", ["station", "module", "type", "temperature_trend"]
-    )
+    TEMPERATURE = Gauge("netatmo_temperature", "The current Temperature", ["station", "module", "type"])
     MIN_TEMP = Gauge("netatmo_temperature_min", "The current Min Temperature", ["station", "module", "type"])
     MAX_TEMP = Gauge("netatmo_temperature_max", "The current Max Temperature", ["station", "module", "type"])
+    TEMP_TREND = Gauge("netatmo_temperature_trend", "The current Temperature Trend", ["station", "module", "type"])
     HUMIDITY = Gauge("netatmo_humidity", "The current Humidity", ["station", "module", "type"])
     CO2 = Gauge("netatmo_co2", "The current CO2", ["station", "module", "type"])
-    PRESSURE = Gauge("netatmo_pressure", "The current Pressure", ["station", "module", "type", "pressure_trend"])
+    PRESSURE = Gauge("netatmo_pressure", "The current Pressure", ["station", "module", "type"])
+    PRESSURE_TREND = Gauge("netatmo_pressure_trend", "The current Pressure Trend", ["station", "module", "type"])
     ABSOLUTEPRESSURE = Gauge(
         "netatmo_absolute_pressure", "The current Absolute Pressure", ["station", "module", "type"]
     )
@@ -247,9 +241,7 @@ if __name__ == "__main__":
                 }
 
                 for key, value in station_data.items():
-                    globals()[f"STATION_{key.upper()}"].labels(station_name, station_module_type).set(
-                        check_value(value)
-                    )
+                    globals()[f"STATION_{key.upper()}"].labels(station_name, station_module_type).set(value)
 
                 station_sensor_data = station.get("dashboard_data")
 
