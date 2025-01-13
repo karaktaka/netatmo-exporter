@@ -276,7 +276,12 @@ if __name__ == "__main__":
 
                     get_sensor_data(module_sensor_data, station_name, module_name, module_type)
         except ApiError as error:
-            log.error(error)
+            log.error(f"Api Error. Retry in {interval} second(s)...")
+            log.debug(error)
+            pass
+        except InvalidGrantError as error:
+            log.error(f"Api Error. Retry in {interval} second(s)...")
+            log.debug(error)
             pass
         finally:
             sleep(interval)
