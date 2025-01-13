@@ -93,9 +93,7 @@ def get_authorization(
                     f.write(yaml.dump(config))
                 else:
                     f.write(yaml.dump(override))
-                log.info("Refresh Token updated.")
-                log.info("If you're running with a temporary file you might want to update your token.")
-                log.info(f"Refresh Token is: {_refresh_token}")
+                log.info(f"Refresh Token updated. New Token is: {_refresh_token}")
 
             return _auth, _refresh_token, _token_expiration
         except ApiError:
