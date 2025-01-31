@@ -80,6 +80,18 @@ def set_logging_level(_verbosity, _level, _logger=None):
     return _logger
 
 
+def safe_list_get(_input_list: list, _idx: int, _default=None) -> Optional[str | int | float]:
+    try:
+        return _input_list[_idx]
+    except IndexError:
+        return _default
+
+
+def shutdown(_signal):
+    global running
+    running = False
+
+
 def get_authorization(
     _client_id: str, _client_secret: str, _refresh_token: str, _token_expiration: float = 0
 ) -> Tuple[NetatmoOAuth2, str, float]:
@@ -110,15 +122,8 @@ def get_authorization(
             log.error(f"Can't connect to Netatmo API. Retrying in {interval} second(s)...")
             pass
         except InvalidGrantError:
-            log.error("Refresh Token expired!")
+            log.error("Refresh Token expired! Please generate a new one in the Developer Console.")
             exit(1)
-
-
-def safe_list_get(_input_list: list, _idx: int, _default=None) -> Optional[str | int | float]:
-    try:
-        return _input_list[_idx]
-    except IndexError:
-        return _default
 
 
 def get_sensor_data(_sensor_data: dict, _station_name: str, _module_name: str, _module_type: str) -> None:
@@ -132,11 +137,6 @@ def get_sensor_data(_sensor_data: dict, _station_name: str, _module_name: str, _
                 )
                 continue
             globals()[_sensor.upper()].labels(_station_name, _module_name, _module_type).set(_value)
-
-
-def shutdown(_signal):
-    global running
-    running = False
 
 
 if __name__ == "__main__":
