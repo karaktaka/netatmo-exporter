@@ -2,15 +2,16 @@
 # encoding=utf-8
 
 import argparse
+import json
 import logging
 import signal
 from enum import Enum
 from os import getenv
-from pathlib import Path
 from time import sleep
 from typing import Tuple, Optional, Dict
 
 import pyatmo.helpers
+import requests
 import yaml
 from oauthlib.oauth2.rfc6749.errors import InvalidGrantError
 from prometheus_client import start_http_server, Gauge
@@ -24,9 +25,9 @@ class TrendState(Enum):
     STABLE = 0
 
 
-def parse_config(_config_file=None) -> Tuple[Dict, str]:
+def parse_config(_config_file: str = None) -> Tuple[Dict, str]:
     if _config_file is None:
-        _config_file = Path("config.yaml")
+        _config_file = "config.yaml"
 
     try:
         with open(_config_file, "r") as _file:
@@ -36,8 +37,9 @@ def parse_config(_config_file=None) -> Tuple[Dict, str]:
     except yaml.YAMLError as _error:
         if hasattr(_error, "problem_mark"):
             _mark = _error.problem_mark
-            print("Error in configuration")
+            print("Error in configuration. Please check your configuration file for syntax errors.")
             print(f"Error position: ({_mark.line + 1}:{_mark.column + 1})")
+        exit(1)
     else:
         return _config, _config_file
 
@@ -103,21 +105,21 @@ def get_authorization(
             )
             _auth.extra["refresh_token"] = _refresh_token
             _result = _auth.refresh_tokens()
-            _refresh_token = _result.get("refresh_token")
+            _new_refresh_token = _result.get("refresh_token", None)
 
-            override = {"netatmo": {"refresh_token": _refresh_token}}
-            with open(config_file, "w") as f:
-                if "netatmo" in config:
-                    config["netatmo"]["refresh_token"] = _refresh_token
-                    f.write(yaml.dump(config))
-                else:
-                    f.write(yaml.dump(override))
-                log.info(f"Refresh Token updated. New Token is: {_refresh_token}")
+            if _new_refresh_token is not None and _new_refresh_token != _refresh_token:
+                _refresh_token = _new_refresh_token
+
+                override = {"netatmo": {"refresh_token": _refresh_token}}
+                with open(config_file, "w") as f:
+                    if "netatmo" in config:
+                        config["netatmo"]["refresh_token"] = _refresh_token
+                        f.write(yaml.dump(config))
+                    else:
+                        f.write(yaml.dump(override))
+                    log.info(f"Refresh Token updated. New Token is: {_refresh_token}")
 
             return _auth, _refresh_token, _token_expiration
-        except ApiError:
-            log.error("No credentials supplied. No Netatmo Account available.")
-            exit(1)
         except ConnectionError:
             log.error(f"Can't connect to Netatmo API. Retrying in {interval} second(s)...")
             pass
@@ -279,6 +281,10 @@ if __name__ == "__main__":
                         )
 
                     get_sensor_data(module_sensor_data, station_name, module_name, module_type)
+        except (json.decoder.JSONDecodeError, requests.exceptions.JSONDecodeError) as error:
+            log.error(f"JSON Decode Error. Retry in {interval} second(s)...")
+            log.debug(error)
+            pass
         except ApiError as error:
             log.error(f"Api Error. Retry in {interval} second(s)...")
             log.debug(error)
