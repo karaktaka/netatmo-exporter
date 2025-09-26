@@ -32,12 +32,12 @@ def parse_config(_config_file=None) -> Tuple[Dict, str]:
         with open(_config_file, "r") as _file:
             _config = yaml.safe_load(_file)
     except FileNotFoundError:
-        log.error("Config file does not exist.")
+        return {}, _config_file
     except yaml.YAMLError as _error:
         if hasattr(_error, "problem_mark"):
             _mark = _error.problem_mark
-            log.error("Error in configuration")
-            log.error(f"Error position: ({_mark.line + 1}:{_mark.column + 1})")
+            print("Error in configuration")
+            print(f"Error position: ({_mark.line + 1}:{_mark.column + 1})")
     else:
         return _config, _config_file
 
@@ -176,6 +176,10 @@ if __name__ == "__main__":
 
     # set logging level
     log = set_logging_level(args.verbosity, loglevel)
+
+    if client_id is None or client_secret is None or refresh_token is None:
+        log.error("No credentials supplied. No Netatmo Account available.")
+        exit(1)
 
     # Prometheus Metrics
     STATION_REACHABLE = Gauge(
