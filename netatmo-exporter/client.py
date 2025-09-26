@@ -103,21 +103,21 @@ def get_authorization(
             )
             _auth.extra["refresh_token"] = _refresh_token
             _result = _auth.refresh_tokens()
-            _refresh_token = _result.get("refresh_token")
+            _new_refresh_token = _result.get("refresh_token", None)
 
-            override = {"netatmo": {"refresh_token": _refresh_token}}
-            with open(config_file, "w") as f:
-                if "netatmo" in config:
-                    config["netatmo"]["refresh_token"] = _refresh_token
-                    f.write(yaml.dump(config))
-                else:
-                    f.write(yaml.dump(override))
-                log.info(f"Refresh Token updated. New Token is: {_refresh_token}")
+            if _new_refresh_token is not None and _new_refresh_token != _refresh_token:
+                _refresh_token = _new_refresh_token
+
+                override = {"netatmo": {"refresh_token": _refresh_token}}
+                with open(config_file, "w") as f:
+                    if "netatmo" in config:
+                        config["netatmo"]["refresh_token"] = _refresh_token
+                        f.write(yaml.dump(config))
+                    else:
+                        f.write(yaml.dump(override))
+                    log.info(f"Refresh Token updated. New Token is: {_refresh_token}")
 
             return _auth, _refresh_token, _token_expiration
-        except ApiError:
-            log.error("No credentials supplied. No Netatmo Account available.")
-            exit(1)
         except ConnectionError:
             log.error(f"Can't connect to Netatmo API. Retrying in {interval} second(s)...")
             pass
