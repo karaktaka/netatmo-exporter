@@ -1,16 +1,20 @@
 [project]
 name = "netatmo-exporter"
-version = "x.x.x"
 description = "A basic exporter for netatmo api"
-authors = [{ name = "Dennis Bernardy", email = "bernardyd@gmail.com" }]
+version = "0.0.1"
+authors = [
+    { name = "Dennis Bernardy", email = "dennis@ethernerd.net" },
+]
 readme = "README.md"
-requires-python = ">=3.12"
-packages = [{include = "netatmo-exporter"}]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "pyatmo>=7.6,<8",
+    "prometheus-client>=0.23",
+    "pyyaml>=6.0.2,<7.0",
+]
 
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+[tool.ruff]
+line-length = 120
 
-[tool.black]
-target-version = ["py312"]
-line-length = "120"
+[tool.ruff.format]
+line-ending = "lf"
