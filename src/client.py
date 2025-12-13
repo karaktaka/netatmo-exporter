@@ -7,6 +7,7 @@ import logging
 import signal
 from enum import Enum
 from os import getenv
+from pathlib import Path
 from time import sleep
 from typing import Dict, Optional
 
@@ -30,7 +31,9 @@ class TrendState(Enum):
     STABLE = 0
 
 
-def parse_config(_config_file: str = "config.yaml") -> Dict:
+def parse_config(_config_file: str = None) -> Dict:
+    if _config_file is None:
+        _config_file = Path(__file__).parent / "config.yaml"
     try:
         with open(_config_file, "r", encoding="utf-8") as _f:
             _config = yaml.safe_load(_f)
@@ -48,7 +51,7 @@ def parse_config(_config_file: str = "config.yaml") -> Dict:
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--config-file", dest="config_file", type=str, nargs="?", default="config.yaml")
+    parser.add_argument("-c", "--config-file", dest="config_file", type=str, nargs="?", default=None)
     parser.add_argument("-t", "--token-file", dest="token_file", type=str, nargs="?", default="data/token.json")
     parser.add_argument("-v", "--verbose", dest="verbosity", action="count", default=0)
 

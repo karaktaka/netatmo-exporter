@@ -6,7 +6,7 @@ services:
     image: localhost/netatmo-exporter
     restart: unless-stopped
     volumes:
-      - ./config.yaml:/app/config.yaml:rw
+      - ./src/config.yaml:/app/config.yaml:rw
       - data:/app/data:rw
 
 volumes:
