@@ -3,18 +3,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: local/netatmo-exporter
+    image: localhost/netatmo-exporter
     restart: unless-stopped
-    environment:
-      - NETATMO_CLIENT_ID=
-      - NETATMO_CLIENT_SECRET=
-      - REFRESH_TOKEN=
-      - INTERVAL=10
-      - LOGLEVEL=DEBUG
-      - LISTEN_PORT=9126
     volumes:
-      - ./config.yaml:/app/config.yaml:ro
-      - netatmo-token:/app/token.json:rw
+      - ./config.yaml:/app/config.yaml:rw
+      - data:/app/data:rw
 
 volumes:
-  netatmo-token:
+  data:

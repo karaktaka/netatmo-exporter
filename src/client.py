@@ -12,6 +12,8 @@ from typing import Dict, Optional
 
 import requests
 import yaml
+from prometheus_client import Gauge, start_http_server
+
 from netatmo_api import (
     NetatmoAPIError,
     NetatmoAuth,
@@ -20,7 +22,6 @@ from netatmo_api import (
     NetatmoThrottlingError,
     NetatmoWeatherStationAPI,
 )
-from prometheus_client import Gauge, start_http_server
 
 
 class TrendState(Enum):
@@ -31,8 +32,8 @@ class TrendState(Enum):
 
 def parse_config(_config_file: str = "config.yaml") -> Dict:
     try:
-        with open(_config_file, "r") as _file:
-            _config = yaml.safe_load(_file)
+        with open(_config_file, "r", encoding="utf-8") as _f:
+            _config = yaml.safe_load(_f)
     except FileNotFoundError:
         return {}
     except yaml.YAMLError as _error:
@@ -47,7 +48,8 @@ def parse_config(_config_file: str = "config.yaml") -> Dict:
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-f", "--file", dest="config_file", type=str, nargs=1, required=False, default="config.yaml")
+    parser.add_argument("-c", "--config-file", dest="config_file", type=str, nargs="?", default="config.yaml")
+    parser.add_argument("-t", "--token-file", dest="token_file", type=str, nargs="?", default="data/token.json")
     parser.add_argument("-v", "--verbose", dest="verbosity", action="count", default=0)
 
     return parser.parse_args()
@@ -99,6 +101,7 @@ def get_authorization(_client_id: str, _client_secret: str, _refresh_token: str)
                 client_id=_client_id,
                 client_secret=_client_secret,
                 refresh_token=_refresh_token,
+                token_file=args.token_file,
             )
             return _auth
         except NetatmoAuthErrorTokenExpired as e:
@@ -139,7 +142,7 @@ if __name__ == "__main__":
 
     interval = int(config.get("interval", "300"))  # interval in seconds; default are 5 Minutes
     loglevel = config.get("loglevel", "INFO")  # set loglevel by Name
-    listen_port = int(config.get("listen_port", "9126"))  # set loglevel for batching (influx)
+    listen_port = config.get("listen_port", "9126")  # set loglevel for batching (influx)
 
     if "netatmo" in config:
         client_id = config.get("netatmo").get("client_id", None)
@@ -200,7 +203,7 @@ if __name__ == "__main__":
     SUM_RAIN_1 = Gauge("netatmo_rain_1h", "Rain over the last 1h", ["station", "module", "type"])
     SUM_RAIN_24 = Gauge("netatmo_rain_24h", "Rain over the last 24h", ["station", "module", "type"])
 
-    start_http_server(listen_port)
+    start_http_server(int(listen_port))
     log.info("Exporter ready...")
     while running:
         authorization = get_authorization(client_id, client_secret, refresh_token)

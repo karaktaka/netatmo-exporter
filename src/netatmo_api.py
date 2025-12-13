@@ -54,6 +54,7 @@ class NetatmoAuth:
         client_id: str,
         client_secret: str,
         refresh_token: str,
+        token_file: str,
     ):
         """
         Initialize Netatmo authentication.
@@ -65,17 +66,17 @@ class NetatmoAuth:
         """
         self.client_id = client_id
         self.client_secret = client_secret
-        self.token_file = "token.json"
+        self.token_file = token_file
         self.refresh_token = refresh_token
         self.access_token: Optional[str] = None
         self.token_expires_in: Optional[int] = None
 
         try:
-            with open(self.token_file, "r") as f:
-                token_data = json.load(f)
-                self.access_token = token_data.get("access_token")
-                self.refresh_token = token_data.get("refresh_token")
-                self.token_expires_in = token_data.get("expiration")
+            with open(self.token_file, "r+") as _f:
+                _token_data = json.load(_f)
+                self.access_token = _token_data.get("access_token")
+                self.refresh_token = _token_data.get("refresh_token")
+                self.token_expires_in = _token_data.get("expiration")
         except (FileNotFoundError, json.JSONDecodeError):
             LOG.info("No existing token file found, will create a new one upon refresh.")
 
@@ -133,8 +134,8 @@ class NetatmoAuth:
                 "refresh_token": self.refresh_token,
                 "expiration": self.token_expires_in,
             }
-            with open(self.token_file, "w") as f:
-                f.write(json.dumps(_token, indent=2))
+            with open(self.token_file, "w") as _f:
+                _f.write(json.dumps(_token, indent=2))
 
             return self.access_token, self.refresh_token, self.token_expires_in
 
@@ -151,7 +152,7 @@ class NetatmoAuth:
             "Authorization": f"Bearer {self.access_token}",
             "Content-Type": "application/json",
             "accept": "application/json",
-            "User-Agent": "python/netatmo-exporter/1.0",
+            "User-Agent": "python/src/1.0",
         }
 
 

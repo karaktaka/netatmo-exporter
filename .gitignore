@@ -120,7 +120,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
 .venv
 env/
 venv/
@@ -168,5 +167,5 @@ cython_debug/
 # Built Visual Studio Code Extensions
 *.vsix
 
-netatmo-exporter/config.yaml
-netatmo-exporter/token.json
+**/config.yaml
+**/token.json

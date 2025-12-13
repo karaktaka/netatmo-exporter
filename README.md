@@ -48,10 +48,10 @@ services:
       - LISTEN_PORT=9126
     volumes:
       - ./config.yaml:/app/config.yaml:ro
-      - netatmo-token:/app/token.json:rw
+      - data:/app/data:rw
 
 volumes:
-  netatmo-token:
+  data:
 ```
 
 ## Prometheus Scraper
@@ -61,5 +61,5 @@ volumes:
 scrape_configs:
   - job_name: netatmo_exporter
     static_configs:
-      - targets: [ 'netatmo-exporter:9126' ]
+      - targets: [ 'src:9126' ]
 ```
