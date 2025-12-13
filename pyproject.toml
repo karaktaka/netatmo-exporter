@@ -1,7 +1,7 @@
 [project]
 name = "netatmo-exporter"
 description = "A basic exporter for netatmo api"
-version = "0.1.0"
+version = "0.2.0"
 authors = [
     { name = "Dennis Bernardy", email = "dennis@ethernerd.net" },
 ]
