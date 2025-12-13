@@ -8,7 +8,7 @@
       <env name="PYTHONUNBUFFERED" value="1" />
     </envs>
     <option name="SDK_HOME" value="" />
-    <option name="SDK_NAME" value="Pipenv (netatmo-exporter)" />
+    <option name="SDK_NAME" value="uv (netatmo-exporter)" />
     <option name="WORKING_DIRECTORY" value="$Projectpath$" />
     <option name="IS_MODULE_SDK" value="false" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
