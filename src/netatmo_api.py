@@ -231,7 +231,7 @@ class NetatmoWeatherStationAPI:
                     "place": station_dict.get("place", {}),
                     "home_id": station_dict.get("home_id"),
                     "home_name": station_dict.get("home_name", "Unknown"),
-                    "dashboard_data": station_dict.get("dashboard_data", {}),
+                    "dashboard_data": station_dict.get("dashboard_data", None),
                     "modules": [],
                 }
             if not station_dict.get("modules"):
@@ -256,7 +256,7 @@ class NetatmoWeatherStationAPI:
                         "last_seen": module_dict.get("last_seen"),
                         "rf_status": module_dict.get("rf_status"),
                         "battery_vp": module_dict.get("battery_vp"),
-                        "dashboard_data": module_dict.get("dashboard_data", {}),
+                        "dashboard_data": module_dict.get("dashboard_data", None),
                     }
                 )
 

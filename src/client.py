@@ -133,7 +133,6 @@ if __name__ == "__main__":
     client_id = None
     client_secret = None
     refresh_token = None
-    token_expiration = 0
     args = parse_args()
     config = parse_config(args.config_file)
 
