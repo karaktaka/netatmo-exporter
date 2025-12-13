@@ -6,11 +6,11 @@ authors = [
     { name = "Dennis Bernardy", email = "dennis@ethernerd.net" },
 ]
 readme = "README.md"
-requires-python = ">=3.12,<3.13"
+requires-python = ">=3.12"
 dependencies = [
-    "pyatmo>=7.6,<8",
-    "prometheus-client>=0.23",
-    "pyyaml>=6.0.2,<7.0",
+    "requests",
+    "prometheus-client",
+    "pyyaml",
 ]
 
 [tool.ruff]

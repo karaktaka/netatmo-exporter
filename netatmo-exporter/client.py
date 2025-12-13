@@ -8,15 +8,19 @@ import signal
 from enum import Enum
 from os import getenv
 from time import sleep
-from typing import Tuple, Optional, Dict
+from typing import Dict, Optional
 
-import pyatmo.helpers
 import requests
 import yaml
-from oauthlib.oauth2.rfc6749.errors import InvalidGrantError
-from prometheus_client import start_http_server, Gauge
-from pyatmo import NetatmoOAuth2, WeatherStationData, ApiError
-from requests import ConnectionError
+from netatmo_api import (
+    NetatmoAPIError,
+    NetatmoAuth,
+    NetatmoAuthError,
+    NetatmoAuthErrorTokenExpired,
+    NetatmoThrottlingError,
+    NetatmoWeatherStationAPI,
+)
+from prometheus_client import Gauge, start_http_server
 
 
 class TrendState(Enum):
@@ -25,15 +29,12 @@ class TrendState(Enum):
     STABLE = 0
 
 
-def parse_config(_config_file: str = None) -> Tuple[Dict, str]:
-    if _config_file is None:
-        _config_file = "config.yaml"
-
+def parse_config(_config_file: str = "config.yaml") -> Dict:
     try:
         with open(_config_file, "r") as _file:
             _config = yaml.safe_load(_file)
     except FileNotFoundError:
-        return {}, _config_file
+        return {}
     except yaml.YAMLError as _error:
         if hasattr(_error, "problem_mark"):
             _mark = _error.problem_mark
@@ -41,12 +42,12 @@ def parse_config(_config_file: str = None) -> Tuple[Dict, str]:
             print(f"Error position: ({_mark.line + 1}:{_mark.column + 1})")
         exit(1)
     else:
-        return _config, _config_file
+        return _config
 
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-f", "--file", dest="config_file", type=str, nargs=1, required=False)
+    parser.add_argument("-f", "--file", dest="config_file", type=str, nargs=1, required=False, default="config.yaml")
     parser.add_argument("-v", "--verbose", dest="verbosity", action="count", default=0)
 
     return parser.parse_args()
@@ -64,9 +65,6 @@ def set_logging_level(_verbosity, _level, _logger=None):
     _fmt = logging.Formatter(
         "%(asctime)s - %(module)s:%(lineno)d - %(levelname)s:%(message)s", datefmt="%d.%m.%Y %H:%M:%S"
     )
-
-    # Basic Setting for Debugging
-    pyatmo.helpers.LOG.setLevel(_level)
 
     # Logger
     if _logger is None:
@@ -94,38 +92,21 @@ def shutdown(_signal):
     running = False
 
 
-def get_authorization(
-    _client_id: str, _client_secret: str, _refresh_token: str, _token_expiration: float = 0
-) -> Tuple[NetatmoOAuth2, str, float]:
+def get_authorization(_client_id: str, _client_secret: str, _refresh_token: str) -> NetatmoAuth:
     while True:
         try:
-            _auth = NetatmoOAuth2(
+            _auth = NetatmoAuth(
                 client_id=_client_id,
                 client_secret=_client_secret,
+                refresh_token=_refresh_token,
             )
-            _auth.extra["refresh_token"] = _refresh_token
-            _result = _auth.refresh_tokens()
-            _new_refresh_token = _result.get("refresh_token", None)
-
-            if _new_refresh_token is not None and _new_refresh_token != _refresh_token:
-                _refresh_token = _new_refresh_token
-
-                override = {"netatmo": {"refresh_token": _refresh_token}}
-                with open(config_file, "w") as f:
-                    if "netatmo" in config:
-                        config["netatmo"]["refresh_token"] = _refresh_token
-                        f.write(yaml.dump(config))
-                    else:
-                        f.write(yaml.dump(override))
-                    log.info(f"Refresh Token updated. New Token is: {_refresh_token}")
-
-            return _auth, _refresh_token, _token_expiration
-        except ConnectionError:
-            log.error(f"Can't connect to Netatmo API. Retrying in {interval} second(s)...")
-            pass
-        except InvalidGrantError:
-            log.error("Refresh Token expired! Please generate a new one in the Developer Console.")
+            return _auth
+        except NetatmoAuthErrorTokenExpired as e:
+            log.error(e)
             exit(1)
+        except NetatmoAuthError as e:
+            log.error(f"Auth Error: {e}. Retrying in {interval} second(s)...")
+            sleep(interval)
 
 
 def get_sensor_data(_sensor_data: dict, _station_name: str, _module_name: str, _module_type: str) -> None:
@@ -148,7 +129,7 @@ if __name__ == "__main__":
     refresh_token = None
     token_expiration = 0
     args = parse_args()
-    config, config_file = parse_config(args.config_file)
+    config = parse_config(args.config_file)
 
     if getenv("TERM", None):
         # noinspection PyTypeChecker
@@ -222,16 +203,17 @@ if __name__ == "__main__":
     start_http_server(listen_port)
     log.info("Exporter ready...")
     while running:
-        authorization, refresh_token, token_expiration = get_authorization(
-            client_id, client_secret, refresh_token, token_expiration
-        )
+        authorization = get_authorization(client_id, client_secret, refresh_token)
         try:
-            weatherData = WeatherStationData(authorization)
-            weatherData.update()
+            # Fetch weather station data
+            api = NetatmoWeatherStationAPI(authorization)
+            api.get_stations_data()
 
-            for station in weatherData.stations.values():
+            stations = api.get_stations()
+
+            for station_id, station in stations.items():
                 log.debug(f"Station Data: {station}")
-                station_name = station.get("home_name", "Unknown")
+                station_name = station.get("station_name", "Unknown")
                 station_module_name = station.get("module_name", "Unknown")
                 station_module_type = station.get("type", "Unknown")
                 station_place = station.get("place", {})
@@ -265,7 +247,7 @@ if __name__ == "__main__":
 
                 get_sensor_data(station_sensor_data, station_name, station_module_name, station_module_type)
 
-                for module in station.get("modules"):
+                for module in station.get("modules", []):
                     log.debug(f"Module Data: {module}")
                     module_name = module.get("module_name")
                     module_type = module.get("type")
@@ -284,14 +266,14 @@ if __name__ == "__main__":
         except (json.decoder.JSONDecodeError, requests.exceptions.JSONDecodeError) as error:
             log.error(f"JSON Decode Error. Retry in {interval} second(s)...")
             log.debug(error)
-            pass
-        except ApiError as error:
-            log.error(f"Api Error. Retry in {interval} second(s)...")
+        except NetatmoThrottlingError as error:
+            log.error(f"API Throttling. Retry in {interval} second(s)...")
             log.debug(error)
-            pass
-        except InvalidGrantError as error:
-            log.error(f"Api Error. Retry in {interval} second(s)...")
+        except NetatmoAPIError as error:
+            log.error(f"API Error. Retry in {interval} second(s)...")
             log.debug(error)
-            pass
+        except NetatmoAuthError as error:
+            log.error(f"Auth Error. Retry in {interval} second(s)...")
+            log.debug(error)
         finally:
             sleep(interval)

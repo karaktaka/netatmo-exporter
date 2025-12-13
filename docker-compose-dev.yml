@@ -8,8 +8,13 @@ services:
     environment:
       - NETATMO_CLIENT_ID=
       - NETATMO_CLIENT_SECRET=
-      - INTERVAL=600
-      - LOGLEVEL=INFO
+      - REFRESH_TOKEN=
+      - INTERVAL=10
+      - LOGLEVEL=DEBUG
       - LISTEN_PORT=9126
     volumes:
-      - "./config.yaml:/app/config.yaml:rw"
+      - ./config.yaml:/app/config.yaml:ro
+      - netatmo-token:/app/token.json:rw
+
+volumes:
+  netatmo-token:
