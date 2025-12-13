@@ -1,4 +1,5 @@
 # netatmo-exporter
+
 ![pyatmo](./pyatmo.png)
 
 Netatmo Weather Station dashboard for Grafana based on Prometheus
@@ -6,12 +7,21 @@ Netatmo Weather Station dashboard for Grafana based on Prometheus
 ![screenshot](./screenshot.png)
 
 ## Installation
+
 * Create a [Netatmo developer account](https://dev.netatmo.com/apidocumentation) and create an app there.
-* Generate a refresh token in your app, scroll down to the "Token generator" and generate a new one with the appropriate scopes.
-* Create file called "config" or use Environment Variables and fill in your NETATMO_CLIENT_ID and NETATMO_CLIENT_SECRET.
-  * Because of recent changes `refresh_token` needs to be added to a configfile as it needs to be re-generated during runtime and will be written to the config.
+* Generate a refresh token in your app, scroll down to the "Token generator" and generate a new one with the appropriate
+  scopes.
+    * Scope "read_station" is sufficient for Weather Station data.
+* Create a file called "config.yaml" or use Environment Variables and fill in your NETATMO_CLIENT_ID,
+  NETATMO_CLIENT_SECRET and REFRESH_TOKEN.
+    * An example config.yaml is provided below.
+* Because of recent changes token information will be written to a local file called "token.json" next to the script.
+  Make sure the user running the script has write permissions to that file.
+    * If running via Docker, mount a volume to /app/token.json and the token file will be stored there.
+    * You will find an example in the docker-compose.yml file.
 * Environment Variables take precedence over everything else and will overwrite your config vars.
-* The default is to search for a config file right next to the script, but you can point to any config file with the "-f" switch.
+* The default is to search for a config file right next to the script, but you can point to any config file with the "
+  -f" switch.
 
 ```yaml
 interval: 600
@@ -24,20 +34,32 @@ netatmo:
   refresh_token: ""
 ```
 
-```
-NETATMO_CLIENT_ID=
-NETATMO_CLIENT_SECRET=
-LISTEN_PORT=9126
-INTERVAL=600
-LOGLEVEL=INFO
-```
+```yaml
+services:
+  netatmo-exporter:
+    image: ghcr.io/karaktaka/netatmo-exporter
+    restart: unless-stopped
+    environment:
+      - NETATMO_CLIENT_ID=
+      - NETATMO_CLIENT_SECRET=
+      - REFRESH_TOKEN=
+      - INTERVAL=600
+      - LOGLEVEL=INFO
+      - LISTEN_PORT=9126
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+      - netatmo-token:/app/token.json:rw
 
+volumes:
+  netatmo-token:
+```
 
 ## Prometheus Scraper
+
 ```yaml
 ---
 scrape_configs:
   - job_name: netatmo_exporter
     static_configs:
-      - targets: ['netatmo-exporter:9126']
+      - targets: [ 'netatmo-exporter:9126' ]
 ```

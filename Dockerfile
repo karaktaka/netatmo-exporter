@@ -18,7 +18,7 @@ RUN adduser -D -H -h /app -u "${UID}" appuser
 USER appuser
 WORKDIR /app
 
-COPY --chown=${UID} pyproject.toml uv.lock netatmo-exporter/client.py /app/
+COPY --chown=${UID} pyproject.toml uv.lock netatmo-exporter/* /app/
 RUN --mount=type=cache,uid=${UID},target=/app/.cache \
     uv sync --frozen --no-dev
 
