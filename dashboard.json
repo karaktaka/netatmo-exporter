@@ -65,7 +65,7 @@
                 "steps": [
                   {
                     "color": "blue",
-                    "value": null
+                    "value": 0
                   },
                   {
                     "color": "green",
@@ -116,7 +116,7 @@
             "sizing": "auto",
             "valueMode": "color"
           },
-          "pluginVersion": "11.4.0",
+          "pluginVersion": "12.3.0",
           "targets": [
             {
               "datasource": {
@@ -167,7 +167,7 @@
                 "steps": [
                   {
                     "color": "yellow",
-                    "value": null
+                    "value": 0
                   },
                   {
                     "color": "green",
@@ -218,7 +218,7 @@
             "sizing": "auto",
             "valueMode": "color"
           },
-          "pluginVersion": "11.4.0",
+          "pluginVersion": "12.3.0",
           "targets": [
             {
               "datasource": {
@@ -271,7 +271,7 @@
                 "steps": [
                   {
                     "color": "semi-dark-red",
-                    "value": null
+                    "value": 0
                   },
                   {
                     "color": "semi-dark-orange",
@@ -322,7 +322,7 @@
             "sizing": "auto",
             "valueMode": "color"
           },
-          "pluginVersion": "11.4.0",
+          "pluginVersion": "12.3.0",
           "targets": [
             {
               "datasource": {
@@ -373,7 +373,7 @@
                 "steps": [
                   {
                     "color": "#d44a3a",
-                    "value": null
+                    "value": 0
                   },
                   {
                     "color": "rgba(237, 129, 40, 0.89)",
@@ -420,7 +420,7 @@
             "sizing": "auto",
             "valueMode": "color"
           },
-          "pluginVersion": "11.4.0",
+          "pluginVersion": "12.3.0",
           "targets": [
             {
               "datasource": {
@@ -481,6 +481,7 @@
                   "type": "linear"
                 },
                 "showPoints": "never",
+                "showValues": false,
                 "spanNulls": true,
                 "stacking": {
                   "group": "A",
@@ -498,7 +499,7 @@
                 "steps": [
                   {
                     "color": "transparent",
-                    "value": null
+                    "value": 0
                   }
                 ]
               },
@@ -526,11 +527,12 @@
               "showLegend": true
             },
             "tooltip": {
+              "hideZeros": false,
               "mode": "single",
               "sort": "none"
             }
           },
-          "pluginVersion": "11.4.0",
+          "pluginVersion": "12.3.0",
           "targets": [
             {
               "datasource": {
@@ -580,7 +582,7 @@
                 "steps": [
                   {
                     "color": "blue",
-                    "value": null
+                    "value": 0
                   },
                   {
                     "color": "green",
@@ -627,7 +629,7 @@
             "textMode": "auto",
             "wideLayout": true
           },
-          "pluginVersion": "11.4.0",
+          "pluginVersion": "12.3.0",
           "targets": [
             {
               "datasource": {
@@ -689,6 +691,7 @@
                   "type": "linear"
                 },
                 "showPoints": "never",
+                "showValues": false,
                 "spanNulls": true,
                 "stacking": {
                   "group": "A",
@@ -706,7 +709,7 @@
                 "steps": [
                   {
                     "color": "transparent",
-                    "value": null
+                    "value": 0
                   }
                 ]
               },
@@ -734,11 +737,12 @@
               "showLegend": true
             },
             "tooltip": {
+              "hideZeros": false,
               "mode": "single",
               "sort": "none"
             }
           },
-          "pluginVersion": "11.4.0",
+          "pluginVersion": "12.3.0",
           "targets": [
             {
               "datasource": {
@@ -788,7 +792,7 @@
                 "steps": [
                   {
                     "color": "yellow",
-                    "value": null
+                    "value": 0
                   },
                   {
                     "color": "green",
@@ -835,7 +839,7 @@
             "textMode": "auto",
             "wideLayout": true
           },
-          "pluginVersion": "11.4.0",
+          "pluginVersion": "12.3.0",
           "targets": [
             {
               "datasource": {
@@ -886,7 +890,7 @@
                 "steps": [
                   {
                     "color": "blue",
-                    "value": null
+                    "value": 0
                   },
                   {
                     "color": "green",
@@ -932,7 +936,7 @@
             "textMode": "auto",
             "wideLayout": true
           },
-          "pluginVersion": "11.4.0",
+          "pluginVersion": "12.3.0",
           "targets": [
             {
               "datasource": {
@@ -982,7 +986,7 @@
                 "steps": [
                   {
                     "color": "yellow",
-                    "value": null
+                    "value": 0
                   },
                   {
                     "color": "green",
@@ -1029,7 +1033,7 @@
             "textMode": "auto",
             "wideLayout": true
           },
-          "pluginVersion": "11.4.0",
+          "pluginVersion": "12.3.0",
           "targets": [
             {
               "datasource": {
@@ -1080,7 +1084,7 @@
                 "steps": [
                   {
                     "color": "blue",
-                    "value": null
+                    "value": 0
                   },
                   {
                     "color": "green",
@@ -1127,7 +1131,7 @@
             "textMode": "auto",
             "wideLayout": true
           },
-          "pluginVersion": "11.4.0",
+          "pluginVersion": "12.3.0",
           "targets": [
             {
               "datasource": {
@@ -1178,7 +1182,7 @@
                 "steps": [
                   {
                     "color": "yellow",
-                    "value": null
+                    "value": 0
                   },
                   {
                     "color": "green",
@@ -1225,7 +1229,7 @@
             "textMode": "auto",
             "wideLayout": true
           },
-          "pluginVersion": "11.4.0",
+          "pluginVersion": "12.3.0",
           "targets": [
             {
               "datasource": {
@@ -1250,7 +1254,7 @@
           "type": "stat"
         }
       ],
-      "title": "Module Details $module",
+      "title": "Module Details $temperature_module",
       "type": "row"
     },
     {
@@ -1259,7 +1263,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 6,
         "x": 0,
         "y": 1
@@ -1271,10 +1275,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style=\"height:100%;display:flex;justify-content:center;align-items:center;\">\n<h1 style=\"font-size:300%;font-weight:bold;\">🏠 $station</h1>\n</div>",
+        "content": "<div style=\"min-height:200px; display:flex; justify-content:center; align-items:center;\">\n    <h1 style=\"font-size:300%; font-weight:bold;\">🏠 $home</h1>\n</div>\n",
         "mode": "html"
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "title": "Station",
       "type": "text"
     },
@@ -1312,6 +1316,7 @@
               "type": "linear"
             },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": true,
             "stacking": {
               "group": "A",
@@ -1329,7 +1334,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -1361,11 +1366,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1373,7 +1379,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "netatmo_noise{station=\"$station\"}",
+          "expr": "netatmo_noise{home=\"$home\",station=\"$station\"}",
           "hide": false,
           "instant": false,
           "legendFormat": "{{module}}",
@@ -1412,7 +1418,7 @@
             "steps": [
               {
                 "color": "#299c46",
-                "value": null
+                "value": 0
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
@@ -1459,7 +1465,7 @@
         "sizing": "auto",
         "valueMode": "color"
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1467,7 +1473,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "netatmo_noise{station=\"$station\"}",
+          "expr": "netatmo_noise{home=\"$home\",station=\"$station\"}",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1516,6 +1522,7 @@
               "type": "linear"
             },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": true,
             "stacking": {
               "group": "A",
@@ -1534,7 +1541,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -1562,11 +1569,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1574,7 +1582,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "netatmo_pressure{station=\"$station\"}",
+          "expr": "netatmo_pressure{home=\"$home\",station=\"$station\"}",
           "hide": false,
           "instant": false,
           "legendFormat": "{{station}}",
@@ -1629,7 +1637,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -1667,7 +1675,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1675,7 +1683,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "netatmo_pressure_trend{station=\"$station\"}",
+          "expr": "netatmo_pressure_trend{home=\"$home\",station=\"$station\"}",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -1721,6 +1729,7 @@
               "type": "linear"
             },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": true,
             "stacking": {
               "group": "A",
@@ -1737,7 +1746,7 @@
             "steps": [
               {
                 "color": "blue",
-                "value": null
+                "value": 0
               },
               {
                 "color": "green",
@@ -1777,11 +1786,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1789,8 +1799,8 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_temperature{station=\"$station\", type=\"NAModule1\"}",
+          "editorMode": "code",
+          "expr": "netatmo_temperature{home=\"$home\",station=\"$station\",type=\"NAModule1\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -1848,7 +1858,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "red",
@@ -1886,7 +1896,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1894,8 +1904,8 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_temperature_trend{station=\"$station\", type=\"NAModule1\"}",
+          "editorMode": "code",
+          "expr": "netatmo_temperature_trend{home=\"$home\",station=\"$station\",type=\"NAModule1\"}",
           "format": "time_series",
           "fullMetaSearch": false,
           "hide": false,
@@ -1947,6 +1957,7 @@
               "type": "linear"
             },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": true,
             "stacking": {
               "group": "A",
@@ -1963,7 +1974,7 @@
             "steps": [
               {
                 "color": "transparent",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -1991,11 +2002,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -2003,8 +2015,8 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_humidity{station=\"$station\", type=\"NAModule1\"}",
+          "editorMode": "code",
+          "expr": "netatmo_humidity{home=\"$home\",station=\"$station\",type=\"NAModule1\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -2046,7 +2058,7 @@
             "steps": [
               {
                 "color": "transparent",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -2085,7 +2097,7 @@
         "sizing": "auto",
         "valueMode": "color"
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -2093,8 +2105,8 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_humidity{station=\"$station\", type=\"NAModule1\"}",
+          "editorMode": "code",
+          "expr": "netatmo_humidity{home=\"$home\",station=\"$station\",type=\"NAModule1\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -2134,7 +2146,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -2143,10 +2155,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 3,
         "x": 0,
-        "y": 9
+        "y": 8
       },
       "id": 49,
       "maxDataPoints": 100,
@@ -2168,7 +2180,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -2177,7 +2189,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "netatmo_station_reachable{station=\"$station\"}",
+          "expr": "netatmo_station_reachable{home=\"$home\",station=\"$station\"}",
           "format": "table",
           "fullMetaSearch": false,
           "groupBy": [
@@ -2249,7 +2261,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -2258,10 +2270,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 3,
         "x": 3,
-        "y": 9
+        "y": 8
       },
       "id": 37,
       "maxDataPoints": 100,
@@ -2283,7 +2295,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -2291,8 +2303,8 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_station_altitude{station=\"$station\"}",
+          "editorMode": "code",
+          "expr": "netatmo_station_altitude{home=\"$home\",station=\"$station\"}",
           "fullMetaSearch": false,
           "groupBy": [
             {
@@ -2391,6 +2403,7 @@
               "type": "linear"
             },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": true,
             "stacking": {
               "group": "A",
@@ -2407,7 +2420,7 @@
             "steps": [
               {
                 "color": "transparent",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -2435,11 +2448,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -2447,8 +2461,8 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_temperature{station=\"$station\", type=~\"NAMain|NAModule4\"}",
+          "editorMode": "code",
+          "expr": "netatmo_temperature{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -2478,7 +2492,7 @@
             "steps": [
               {
                 "color": "blue",
-                "value": null
+                "value": 0
               },
               {
                 "color": "green",
@@ -2520,12 +2534,12 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_temperature{station=\"$station\", type=~\"NAMain|NAModule4\"}",
+          "editorMode": "code",
+          "expr": "netatmo_temperature{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -2553,7 +2567,7 @@
             "steps": [
               {
                 "color": "blue",
-                "value": null
+                "value": 0
               },
               {
                 "color": "green",
@@ -2597,12 +2611,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "min(netatmo_temperature{station=\"$station\", type=~\"NAMain|NAModule4\"})",
+          "editorMode": "code",
+          "expr": "min(netatmo_temperature{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -2630,7 +2644,7 @@
             "steps": [
               {
                 "color": "blue",
-                "value": null
+                "value": 0
               },
               {
                 "color": "green",
@@ -2674,12 +2688,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "avg(netatmo_temperature{station=\"$station\", type=~\"NAMain|NAModule4\"})",
+          "editorMode": "code",
+          "expr": "avg(netatmo_temperature{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -2707,7 +2721,7 @@
             "steps": [
               {
                 "color": "blue",
-                "value": null
+                "value": 0
               },
               {
                 "color": "green",
@@ -2751,12 +2765,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "max(netatmo_temperature{station=\"$station\", type=~\"NAMain|NAModule4\"})",
+          "editorMode": "code",
+          "expr": "max(netatmo_temperature{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -2802,6 +2816,7 @@
               "type": "linear"
             },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": true,
             "stacking": {
               "group": "A",
@@ -2818,7 +2833,7 @@
             "steps": [
               {
                 "color": "transparent",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -2846,11 +2861,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -2858,8 +2874,8 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_co2{station=\"$station\", type=~\"NAMain|NAModule4\"}",
+          "editorMode": "code",
+          "expr": "netatmo_co2{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -2889,7 +2905,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "yellow",
@@ -2927,12 +2943,12 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_co2{station=\"$station\", type=~\"NAMain|NAModule4\"}",
+          "editorMode": "code",
+          "expr": "netatmo_co2{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -2960,7 +2976,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "yellow",
@@ -3000,12 +3016,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "min(netatmo_co2{station=\"$station\", type=~\"NAMain|NAModule4\"})",
+          "editorMode": "code",
+          "expr": "min(netatmo_co2{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3033,7 +3049,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "#EAB839",
@@ -3073,12 +3089,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "avg(netatmo_co2{station=\"$station\", type=~\"NAMain|NAModule4\"})",
+          "editorMode": "code",
+          "expr": "avg(netatmo_co2{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3106,7 +3122,7 @@
             "steps": [
               {
                 "color": "green",
-                "value": null
+                "value": 0
               },
               {
                 "color": "#EAB839",
@@ -3146,12 +3162,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "max(netatmo_co2{station=\"$station\", type=~\"NAMain|NAModule4\"})",
+          "editorMode": "code",
+          "expr": "max(netatmo_co2{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3197,6 +3213,7 @@
               "type": "linear"
             },
             "showPoints": "never",
+            "showValues": false,
             "spanNulls": true,
             "stacking": {
               "group": "A",
@@ -3213,7 +3230,7 @@
             "steps": [
               {
                 "color": "transparent",
-                "value": null
+                "value": 0
               }
             ]
           },
@@ -3241,11 +3258,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -3253,8 +3271,8 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_humidity{station=\"$station\", type=~\"NAMain|NAModule4\"}",
+          "editorMode": "code",
+          "expr": "netatmo_humidity{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -3284,7 +3302,7 @@
             "steps": [
               {
                 "color": "yellow",
-                "value": null
+                "value": 0
               },
               {
                 "color": "green",
@@ -3326,12 +3344,12 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_humidity{station=\"$station\", type=~\"NAMain|NAModule4\"}",
+          "editorMode": "code",
+          "expr": "netatmo_humidity{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3359,7 +3377,7 @@
             "steps": [
               {
                 "color": "yellow",
-                "value": null
+                "value": 0
               },
               {
                 "color": "green",
@@ -3403,12 +3421,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "min(netatmo_humidity{station=\"$station\", type=~\"NAMain|NAModule4\"})",
+          "editorMode": "code",
+          "expr": "min(netatmo_humidity{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3436,7 +3454,7 @@
             "steps": [
               {
                 "color": "yellow",
-                "value": null
+                "value": 0
               },
               {
                 "color": "green",
@@ -3480,12 +3498,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "avg(netatmo_humidity{station=\"$station\", type=~\"NAMain|NAModule4\"})",
+          "editorMode": "code",
+          "expr": "avg(netatmo_humidity{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3513,7 +3531,7 @@
             "steps": [
               {
                 "color": "yellow",
-                "value": null
+                "value": 0
               },
               {
                 "color": "green",
@@ -3557,12 +3575,12 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "max(netatmo_humidity{station=\"$station\", type=~\"NAMain|NAModule4\"})",
+          "editorMode": "code",
+          "expr": "max(netatmo_humidity{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3575,7 +3593,7 @@
       "type": "stat"
     },
     {
-      "collapsed": false,
+      "collapsed": true,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3583,1414 +3601,1422 @@
         "y": 32
       },
       "id": 135,
-      "panels": [],
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "continuous-BlPu",
+                "seriesBy": "max"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "bars",
+                "fillOpacity": 10,
+                "gradientMode": "scheme",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "showValues": false,
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 3,
+              "fieldMinMax": false,
+              "links": [],
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "transparent",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "mm"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 12,
+            "x": 0,
+            "y": 33
+          },
+          "id": 196,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "lastNotNull",
+                "min",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+              },
+              "editorMode": "code",
+              "expr": "netatmo_rain{home=\"$home\",station=\"$station\",type=\"NAModule3\"}",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "{{station}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "decimals": 3,
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "#73BF69",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "suffix: mm"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 12,
+            "y": 33
+          },
+          "hideTimeOverride": true,
+          "id": 197,
+          "maxDataPoints": 100,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "percentChangeColorMode": "standard",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "text": {},
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "12.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "netatmo_rain_1h{home=\"$home\",station=\"$station\",type=\"NAModule3\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "__auto",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "timeFrom": "2h",
+          "title": "Summary (Last Hour)",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "decimals": 0,
+              "displayName": "",
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "-"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "max": 0,
+              "min": -127,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "semi-dark-red",
+                    "value": 0
+                  },
+                  {
+                    "color": "semi-dark-orange",
+                    "value": -86
+                  },
+                  {
+                    "color": "semi-dark-blue",
+                    "value": -71
+                  },
+                  {
+                    "color": "rgba(0, 0, 0, 0)",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "dBm"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 9,
+            "x": 15,
+            "y": 33
+          },
+          "id": 227,
+          "options": {
+            "displayMode": "lcd",
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "maxVizHeight": 300,
+            "minVizHeight": 16,
+            "minVizWidth": 8,
+            "namePlacement": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "last"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showUnfilled": true,
+            "sizing": "auto",
+            "valueMode": "color"
+          },
+          "pluginVersion": "12.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+              },
+              "disableTextWrap": false,
+              "editorMode": "code",
+              "expr": "netatmo_rf_status{home=\"$home\",station=\"$station\",type=\"NAModule3\"} * -1",
+              "fullMetaSearch": false,
+              "hide": false,
+              "includeNullMetadata": true,
+              "instant": false,
+              "legendFormat": "__auto",
+              "range": true,
+              "refId": "A",
+              "useBackend": false
+            }
+          ],
+          "title": "Signal",
+          "type": "bargauge"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "decimals": 3,
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "N/A"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "#73BF69",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "suffix: mm"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 12,
+            "y": 36
+          },
+          "hideTimeOverride": true,
+          "id": 198,
+          "maxDataPoints": 100,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "percentChangeColorMode": "standard",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "text": {},
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "12.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "netatmo_rain_24h{station=\"$station\", type=\"NAModule3\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "__auto",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "timeFrom": "24h",
+          "title": "Summary (Today)",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "-"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "max": 100,
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "#d44a3a",
+                    "value": 0
+                  },
+                  {
+                    "color": "rgba(237, 129, 40, 0.89)",
+                    "value": 10
+                  },
+                  {
+                    "color": "#299c46",
+                    "value": 20
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 9,
+            "x": 15,
+            "y": 36
+          },
+          "id": 228,
+          "options": {
+            "displayMode": "lcd",
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "maxVizHeight": 300,
+            "minVizHeight": 16,
+            "minVizWidth": 8,
+            "namePlacement": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showUnfilled": true,
+            "sizing": "auto",
+            "valueMode": "color"
+          },
+          "pluginVersion": "12.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+              },
+              "disableTextWrap": false,
+              "editorMode": "code",
+              "expr": "netatmo_battery_percent{home=\"$home\",station=\"$station\",type=\"NAModule3\"}",
+              "fullMetaSearch": false,
+              "hide": false,
+              "includeNullMetadata": true,
+              "instant": false,
+              "legendFormat": "__auto",
+              "range": true,
+              "refId": "A",
+              "useBackend": false
+            }
+          ],
+          "title": "Battery",
+          "type": "bargauge"
+        }
+      ],
       "repeat": "rain_module",
       "title": "Rain",
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "continuous-blues",
-            "seriesBy": "max"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "bars",
-            "fillOpacity": 10,
-            "gradientMode": "hue",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "decimals": 3,
-          "fieldMinMax": false,
-          "links": [],
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "transparent",
-                "value": null
-              }
-            ]
-          },
-          "unit": "mm"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 0,
-        "y": 33
-      },
-      "id": 196,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "lastNotNull",
-            "min",
-            "max"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "11.4.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "editorMode": "builder",
-          "expr": "netatmo_rain{station=\"$station\", type=\"NAModule3\"}",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "{{station}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 3,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#73BF69",
-                "value": null
-              }
-            ]
-          },
-          "unit": "suffix: mm"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 12,
-        "y": 33
-      },
-      "hideTimeOverride": true,
-      "id": 197,
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "text": {},
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.4.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "netatmo_rain_1h{station=\"$station\", type=\"NAModule3\"}",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "__auto",
-          "range": false,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": "2h",
-      "title": "Summary (Last Hour)",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 0,
-          "displayName": "",
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "-"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "max": 0,
-          "min": -127,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "semi-dark-red",
-                "value": null
-              },
-              {
-                "color": "semi-dark-orange",
-                "value": -86
-              },
-              {
-                "color": "semi-dark-blue",
-                "value": -71
-              },
-              {
-                "color": "rgba(0, 0, 0, 0)",
-                "value": 0
-              }
-            ]
-          },
-          "unit": "dBm"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 9,
-        "x": 15,
-        "y": 33
-      },
-      "id": 227,
-      "options": {
-        "displayMode": "lcd",
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "maxVizHeight": 300,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
-      },
-      "pluginVersion": "11.4.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_rf_status{station=\"$station\", type=\"NAModule3\"} * -1",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "Signal",
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 3,
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#73BF69",
-                "value": null
-              }
-            ]
-          },
-          "unit": "suffix: mm"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 12,
-        "y": 36
-      },
-      "hideTimeOverride": true,
-      "id": 198,
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "text": {},
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.4.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "netatmo_rain_24h{station=\"$station\", type=\"NAModule3\"}",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "__auto",
-          "range": false,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": "24h",
-      "title": "Summary (Today)",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "-"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#d44a3a",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 10
-              },
-              {
-                "color": "#299c46",
-                "value": 20
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 9,
-        "x": 15,
-        "y": 36
-      },
-      "id": 228,
-      "options": {
-        "displayMode": "lcd",
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "maxVizHeight": 300,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
-      },
-      "pluginVersion": "11.4.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_battery_percent{station=\"$station\", type=\"NAModule3\"}",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "Battery",
-      "type": "bargauge"
-    },
-    {
-      "collapsed": false,
+      "collapsed": true,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 39
+        "y": 33
       },
       "id": 136,
-      "panels": [],
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "continuous-purples",
+                "seriesBy": "max"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.7,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "hue",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 3,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "showValues": false,
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "fieldMinMax": false,
+              "links": [],
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "transparent",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "velocityms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 7,
+            "x": 0,
+            "y": 40
+          },
+          "id": 199,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "lastNotNull",
+                "min",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+              },
+              "editorMode": "code",
+              "expr": "netatmo_wind_strength{home=\"$home\",station=\"$station\",type=\"NAModule2\"}",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "{{module}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Wind",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "from": 0,
+                    "result": {
+                      "index": 0,
+                      "text": "N"
+                    },
+                    "to": 23
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 23,
+                    "result": {
+                      "index": 1,
+                      "text": "NNE"
+                    },
+                    "to": 45
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 45,
+                    "result": {
+                      "index": 2,
+                      "text": "NE"
+                    },
+                    "to": 68
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 68,
+                    "result": {
+                      "index": 3,
+                      "text": "ENE"
+                    },
+                    "to": 90
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 90,
+                    "result": {
+                      "index": 4,
+                      "text": "E"
+                    },
+                    "to": 113
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 113,
+                    "result": {
+                      "index": 5,
+                      "text": "ESE"
+                    },
+                    "to": 135
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 135,
+                    "result": {
+                      "index": 6,
+                      "text": "SE"
+                    },
+                    "to": 158
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 158,
+                    "result": {
+                      "index": 7,
+                      "text": "SSE"
+                    },
+                    "to": 180
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 180,
+                    "result": {
+                      "index": 8,
+                      "text": "S"
+                    },
+                    "to": 203
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 203,
+                    "result": {
+                      "index": 9,
+                      "text": "SSW"
+                    },
+                    "to": 225
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 225,
+                    "result": {
+                      "index": 10,
+                      "text": "SW"
+                    },
+                    "to": 248
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 248,
+                    "result": {
+                      "index": 11,
+                      "text": "WSW"
+                    },
+                    "to": 270
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 270,
+                    "result": {
+                      "index": 12,
+                      "text": "W"
+                    },
+                    "to": 293
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 293,
+                    "result": {
+                      "index": 13,
+                      "text": "WNW"
+                    },
+                    "to": 315
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 315,
+                    "result": {
+                      "index": 14,
+                      "text": "NW"
+                    },
+                    "to": 338
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 338,
+                    "result": {
+                      "index": 15,
+                      "text": "NNW"
+                    },
+                    "to": 360
+                  },
+                  "type": "range"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "degree"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 2,
+            "x": 7,
+            "y": 40
+          },
+          "hideTimeOverride": true,
+          "id": 202,
+          "maxDataPoints": 100,
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "percentChangeColorMode": "standard",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "text": {},
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "12.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+              },
+              "editorMode": "code",
+              "expr": "netatmo_wind_angle{home=\"$home\",station=\"$station\",type=\"NAModule2\"}",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "__auto",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "timeFrom": "15m",
+          "title": "Wind Angle",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "continuous-purples",
+                "seriesBy": "max"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "hue",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "showValues": false,
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 1,
+              "links": [],
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "transparent",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "velocityms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 7,
+            "x": 9,
+            "y": 40
+          },
+          "id": 200,
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "lastNotNull",
+                "min",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "hideZeros": false,
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "12.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+              },
+              "editorMode": "code",
+              "expr": "netatmo_gust_strength{home=\"$home\",station=\"$station\",type=\"NAModule2\"}",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "{{module}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Gust",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "from": 0,
+                    "result": {
+                      "index": 0,
+                      "text": "N"
+                    },
+                    "to": 23
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 23,
+                    "result": {
+                      "index": 1,
+                      "text": "NNE"
+                    },
+                    "to": 45
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 45,
+                    "result": {
+                      "index": 2,
+                      "text": "NE"
+                    },
+                    "to": 68
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 68,
+                    "result": {
+                      "index": 3,
+                      "text": "ENE"
+                    },
+                    "to": 90
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 90,
+                    "result": {
+                      "index": 4,
+                      "text": "E"
+                    },
+                    "to": 113
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 113,
+                    "result": {
+                      "index": 5,
+                      "text": "ESE"
+                    },
+                    "to": 135
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 135,
+                    "result": {
+                      "index": 6,
+                      "text": "SE"
+                    },
+                    "to": 158
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 158,
+                    "result": {
+                      "index": 7,
+                      "text": "SSE"
+                    },
+                    "to": 180
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 180,
+                    "result": {
+                      "index": 8,
+                      "text": "S"
+                    },
+                    "to": 203
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 203,
+                    "result": {
+                      "index": 9,
+                      "text": "SSW"
+                    },
+                    "to": 225
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 225,
+                    "result": {
+                      "index": 10,
+                      "text": "SW"
+                    },
+                    "to": 248
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 248,
+                    "result": {
+                      "index": 11,
+                      "text": "WSW"
+                    },
+                    "to": 270
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 270,
+                    "result": {
+                      "index": 12,
+                      "text": "W"
+                    },
+                    "to": 293
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 293,
+                    "result": {
+                      "index": 13,
+                      "text": "WNW"
+                    },
+                    "to": 315
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 315,
+                    "result": {
+                      "index": 14,
+                      "text": "NW"
+                    },
+                    "to": 338
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 338,
+                    "result": {
+                      "index": 15,
+                      "text": "NNW"
+                    },
+                    "to": 360
+                  },
+                  "type": "range"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "degree"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 2,
+            "x": 16,
+            "y": 40
+          },
+          "hideTimeOverride": true,
+          "id": 203,
+          "maxDataPoints": 100,
+          "options": {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "percentChangeColorMode": "standard",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "text": {},
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "12.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+              },
+              "editorMode": "code",
+              "expr": "netatmo_gust_angle{home=\"$home\",station=\"$station\",type=\"NAModule2\"}",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "__auto",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "timeFrom": "15m",
+          "title": "Gust Angle",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "decimals": 0,
+              "displayName": "",
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "-"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "max": 0,
+              "min": -127,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "semi-dark-red",
+                    "value": 0
+                  },
+                  {
+                    "color": "semi-dark-orange",
+                    "value": -86
+                  },
+                  {
+                    "color": "semi-dark-blue",
+                    "value": -71
+                  },
+                  {
+                    "color": "rgba(0, 0, 0, 0)",
+                    "value": 0
+                  }
+                ]
+              },
+              "unit": "dBm"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 6,
+            "x": 18,
+            "y": 40
+          },
+          "id": 229,
+          "options": {
+            "displayMode": "lcd",
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "maxVizHeight": 300,
+            "minVizHeight": 16,
+            "minVizWidth": 8,
+            "namePlacement": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "last"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showUnfilled": true,
+            "sizing": "auto",
+            "valueMode": "color"
+          },
+          "pluginVersion": "12.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+              },
+              "disableTextWrap": false,
+              "editorMode": "code",
+              "expr": "netatmo_rf_status{home=\"$home\",station=\"$station\",type=\"NAModule2\"} * -1",
+              "fullMetaSearch": false,
+              "hide": false,
+              "includeNullMetadata": true,
+              "instant": false,
+              "legendFormat": "__auto",
+              "range": true,
+              "refId": "A",
+              "useBackend": false
+            }
+          ],
+          "title": "Signal",
+          "type": "bargauge"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "match": "null",
+                    "result": {
+                      "text": "-"
+                    }
+                  },
+                  "type": "special"
+                }
+              ],
+              "max": 100,
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "#d44a3a",
+                    "value": 0
+                  },
+                  {
+                    "color": "rgba(237, 129, 40, 0.89)",
+                    "value": 10
+                  },
+                  {
+                    "color": "#299c46",
+                    "value": 20
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 6,
+            "x": 18,
+            "y": 43
+          },
+          "id": 230,
+          "options": {
+            "displayMode": "lcd",
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": false
+            },
+            "maxVizHeight": 300,
+            "minVizHeight": 16,
+            "minVizWidth": 8,
+            "namePlacement": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showUnfilled": true,
+            "sizing": "auto",
+            "valueMode": "color"
+          },
+          "pluginVersion": "12.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+              },
+              "disableTextWrap": false,
+              "editorMode": "code",
+              "expr": "netatmo_battery_percent{home=\"$home\",station=\"$station\",type=\"NAModule2\"}",
+              "fullMetaSearch": false,
+              "hide": false,
+              "includeNullMetadata": true,
+              "instant": false,
+              "legendFormat": "__auto",
+              "range": true,
+              "refId": "A",
+              "useBackend": false
+            }
+          ],
+          "title": "Battery",
+          "type": "bargauge"
+        }
+      ],
       "repeat": "wind_module",
       "title": "Wind",
       "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "continuous-purples",
-            "seriesBy": "max"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.7,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "hue",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 3,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "fieldMinMax": false,
-          "links": [],
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "transparent",
-                "value": null
-              }
-            ]
-          },
-          "unit": "velocityms"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 7,
-        "x": 0,
-        "y": 40
-      },
-      "id": 199,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "lastNotNull",
-            "min",
-            "max"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "11.4.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "editorMode": "builder",
-          "expr": "netatmo_wind_strength{station=\"$station\", type=\"NAModule2\"}",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "{{module}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Wind",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "from": 0,
-                "result": {
-                  "index": 0,
-                  "text": "N"
-                },
-                "to": 23
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 23,
-                "result": {
-                  "index": 1,
-                  "text": "NNE"
-                },
-                "to": 45
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 45,
-                "result": {
-                  "index": 2,
-                  "text": "NE"
-                },
-                "to": 68
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 68,
-                "result": {
-                  "index": 3,
-                  "text": "ENE"
-                },
-                "to": 90
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 90,
-                "result": {
-                  "index": 4,
-                  "text": "E"
-                },
-                "to": 113
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 113,
-                "result": {
-                  "index": 5,
-                  "text": "ESE"
-                },
-                "to": 135
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 135,
-                "result": {
-                  "index": 6,
-                  "text": "SE"
-                },
-                "to": 158
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 158,
-                "result": {
-                  "index": 7,
-                  "text": "SSE"
-                },
-                "to": 180
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 180,
-                "result": {
-                  "index": 8,
-                  "text": "S"
-                },
-                "to": 203
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 203,
-                "result": {
-                  "index": 9,
-                  "text": "SSW"
-                },
-                "to": 225
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 225,
-                "result": {
-                  "index": 10,
-                  "text": "SW"
-                },
-                "to": 248
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 248,
-                "result": {
-                  "index": 11,
-                  "text": "WSW"
-                },
-                "to": 270
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 270,
-                "result": {
-                  "index": 12,
-                  "text": "W"
-                },
-                "to": 293
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 293,
-                "result": {
-                  "index": 13,
-                  "text": "WNW"
-                },
-                "to": 315
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 315,
-                "result": {
-                  "index": 14,
-                  "text": "NW"
-                },
-                "to": 338
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 338,
-                "result": {
-                  "index": 15,
-                  "text": "NNW"
-                },
-                "to": 360
-              },
-              "type": "range"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "degree"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 2,
-        "x": 7,
-        "y": 40
-      },
-      "hideTimeOverride": true,
-      "id": 202,
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "text": {},
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.4.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "editorMode": "code",
-          "expr": "netatmo_wind_angle{station=\"$station\", type=\"NAModule2\"}",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": "15m",
-      "title": "Wind Angle",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "continuous-purples",
-            "seriesBy": "max"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "hue",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "decimals": 1,
-          "links": [],
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "transparent",
-                "value": null
-              }
-            ]
-          },
-          "unit": "velocityms"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 7,
-        "x": 9,
-        "y": 40
-      },
-      "id": 200,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "lastNotNull",
-            "min",
-            "max"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "11.4.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "editorMode": "code",
-          "expr": "netatmo_gust_strength{station=\"$station\", type=\"NAModule2\"}",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "{{module}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Gust",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "from": 0,
-                "result": {
-                  "index": 0,
-                  "text": "N"
-                },
-                "to": 23
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 23,
-                "result": {
-                  "index": 1,
-                  "text": "NNE"
-                },
-                "to": 45
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 45,
-                "result": {
-                  "index": 2,
-                  "text": "NE"
-                },
-                "to": 68
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 68,
-                "result": {
-                  "index": 3,
-                  "text": "ENE"
-                },
-                "to": 90
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 90,
-                "result": {
-                  "index": 4,
-                  "text": "E"
-                },
-                "to": 113
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 113,
-                "result": {
-                  "index": 5,
-                  "text": "ESE"
-                },
-                "to": 135
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 135,
-                "result": {
-                  "index": 6,
-                  "text": "SE"
-                },
-                "to": 158
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 158,
-                "result": {
-                  "index": 7,
-                  "text": "SSE"
-                },
-                "to": 180
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 180,
-                "result": {
-                  "index": 8,
-                  "text": "S"
-                },
-                "to": 203
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 203,
-                "result": {
-                  "index": 9,
-                  "text": "SSW"
-                },
-                "to": 225
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 225,
-                "result": {
-                  "index": 10,
-                  "text": "SW"
-                },
-                "to": 248
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 248,
-                "result": {
-                  "index": 11,
-                  "text": "WSW"
-                },
-                "to": 270
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 270,
-                "result": {
-                  "index": 12,
-                  "text": "W"
-                },
-                "to": 293
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 293,
-                "result": {
-                  "index": 13,
-                  "text": "WNW"
-                },
-                "to": 315
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 315,
-                "result": {
-                  "index": 14,
-                  "text": "NW"
-                },
-                "to": 338
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 338,
-                "result": {
-                  "index": 15,
-                  "text": "NNW"
-                },
-                "to": 360
-              },
-              "type": "range"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "degree"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 2,
-        "x": 16,
-        "y": 40
-      },
-      "hideTimeOverride": true,
-      "id": 203,
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "text": {},
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.4.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "editorMode": "code",
-          "expr": "netatmo_gust_angle{station=\"$station\", type=\"NAModule2\"}",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "timeFrom": "15m",
-      "title": "Gust Angle",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 0,
-          "displayName": "",
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "-"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "max": 0,
-          "min": -127,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "semi-dark-red",
-                "value": null
-              },
-              {
-                "color": "semi-dark-orange",
-                "value": -86
-              },
-              {
-                "color": "semi-dark-blue",
-                "value": -71
-              },
-              {
-                "color": "rgba(0, 0, 0, 0)",
-                "value": 0
-              }
-            ]
-          },
-          "unit": "dBm"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 18,
-        "y": 40
-      },
-      "id": 229,
-      "options": {
-        "displayMode": "lcd",
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "maxVizHeight": 300,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
-      },
-      "pluginVersion": "11.4.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_rf_status{station=\"$station\", type=\"NAModule2\"} * -1",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "Signal",
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "-"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#d44a3a",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 10
-              },
-              {
-                "color": "#299c46",
-                "value": 20
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 18,
-        "y": 43
-      },
-      "id": 230,
-      "options": {
-        "displayMode": "lcd",
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "maxVizHeight": 300,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
-      },
-      "pluginVersion": "11.4.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "netatmo_battery_percent{station=\"$station\", type=\"NAModule2\"}",
-          "fullMetaSearch": false,
-          "hide": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
-        }
-      ],
-      "title": "Battery",
-      "type": "bargauge"
     }
   ],
   "preload": false,
   "refresh": "30s",
-  "schemaVersion": 40,
+  "schemaVersion": 42,
   "tags": [
     "netatmo",
     "weather"
@@ -5012,9 +5038,30 @@
         "type": "datasource"
       },
       {
+        "allowCustomValue": false,
         "current": {
           "text": "Zuhause",
           "value": "Zuhause"
+        },
+        "definition": "label_values(netatmo_station_reachable,home)",
+        "includeAll": false,
+        "label": "Home",
+        "name": "home",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(netatmo_station_reachable,home)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {
+          "text": "Zuhause (Wohnzimmer)",
+          "value": "Zuhause (Wohnzimmer)"
         },
         "datasource": {
           "type": "prometheus",
@@ -5035,6 +5082,7 @@
         "type": "query"
       },
       {
+        "allowCustomValue": false,
         "current": {
           "text": "Außen",
           "value": "Außen"
@@ -5045,8 +5093,8 @@
         },
         "definition": "label_values(netatmo_temperature{type=~\"NAMain|NAModule1|NAModule4\"},module)",
         "includeAll": false,
-        "label": "Module",
-        "name": "module",
+        "label": "Temperature Module",
+        "name": "temperature_module",
         "options": [],
         "query": {
           "qryType": 1,
@@ -5080,6 +5128,5 @@
   "timezone": "",
   "title": "Netatmo Weather Station",
   "uid": "de9vhuqlsexa8f",
-  "version": 23,
-  "weekStart": ""
+  "version": 27
 }
