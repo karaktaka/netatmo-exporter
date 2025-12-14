@@ -7,53 +7,32 @@ Helper utilities for the Netatmo exporter.
 import logging
 
 
-def configure_logging(verbosity: int = 0, level: str = "INFO") -> logging.Logger:
+def configure_logging(logger: logging.Logger, level: str = "INFO") -> logging.Logger:
     """
     Configure logging for the application and all modules.
 
-    This function configures the root logger with a consistent format
-    and level, which applies to all loggers in the application including
-    those in imported modules.
+    This function configures a logger with a consistent format
+    and level. If the logger already has handlers, it will not add duplicates.
 
     Args:
-        verbosity: Verbosity level (0-3). Higher values increase verbosity.
-                   0: Use the provided level parameter
-                   1: WARNING
-                   2: INFO
-                   3: DEBUG
         level: Default logging level name (e.g., "INFO", "DEBUG", "WARNING")
+        logger: Optional logger instance to configure. If None, a new logger is created.
 
     Returns:
-        The configured root logger instance
+        The configured logger instance
     """
-    level_map = {
-        1: "WARNING",
-        2: "INFO",
-        3: "DEBUG",
-    }
+    # Only add handler if logger doesn't already have one
+    if not logger.handlers:
+        _fmt = logging.Formatter(
+            "%(asctime)s - %(module)s:%(lineno)d - %(levelname)s:%(message)s", datefmt="%d.%m.%Y %H:%M:%S"
+        )
 
-    # Use verbosity mapping if verbosity > 0, otherwise use provided level
-    if verbosity > 0:
-        level = level_map.get(verbosity, level)
+        _ch = logging.StreamHandler()
+        _ch.setFormatter(_fmt)
 
-    # Create formatter with consistent format across all loggers
-    formatter = logging.Formatter(
-        "%(asctime)s - %(module)s:%(lineno)d - %(levelname)s:%(message)s", datefmt="%d.%m.%Y %H:%M:%S"
-    )
+        logger.addHandler(_ch)
 
-    # Configure root logger
-    root_logger = logging.getLogger()
+        logger.setLevel(level)
+        logger.info(f"Setting loglevel to {level} for {logger}.")
 
-    # Clear any existing handlers to avoid duplicates
-    root_logger.handlers.clear()
-
-    # Add stream handler with formatter
-    stream_handler = logging.StreamHandler()
-    stream_handler.setFormatter(formatter)
-    root_logger.addHandler(stream_handler)
-
-    # Set the logging level
-    root_logger.setLevel(level)
-    root_logger.info(f"Logging configured with level: {level}")
-
-    return root_logger
+    return logger

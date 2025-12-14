@@ -3,6 +3,7 @@
 
 import argparse
 import json
+import logging
 import signal
 from enum import Enum
 from os import getenv
@@ -16,12 +17,10 @@ from prometheus_client import Gauge, start_http_server
 
 from helpers import configure_logging
 from netatmo_api import (
+    NetatmoAPI,
     NetatmoAPIError,
-    NetatmoAuth,
     NetatmoAuthError,
-    NetatmoAuthErrorTokenExpired,
     NetatmoThrottlingError,
-    NetatmoWeatherStationAPI,
 )
 
 # Prometheus Metrics
@@ -57,6 +56,13 @@ GUSTSTRENGTH = Gauge("netatmo_gust_strength", "The current Gust Strength", ["sta
 RAIN = Gauge("netatmo_rain", "The current Rain", ["station", "module", "type"])
 SUM_RAIN_1 = Gauge("netatmo_rain_1h", "Rain over the last 1h", ["station", "module", "type"])
 SUM_RAIN_24 = Gauge("netatmo_rain_24h", "Rain over the last 24h", ["station", "module", "type"])
+
+
+class VerbosityLevel(Enum):
+    NOTSET = 0
+    WARNING = 1
+    INFO = 2
+    DEBUG = 3
 
 
 class TrendState(Enum):
@@ -104,24 +110,6 @@ def shutdown(_signal):
     running = False
 
 
-def get_authorization(_client_id: str, _client_secret: str, _refresh_token: str) -> NetatmoAuth:
-    while True:
-        try:
-            _auth = NetatmoAuth(
-                client_id=_client_id,
-                client_secret=_client_secret,
-                refresh_token=_refresh_token,
-                token_file=args.token_file,
-            )
-            return _auth
-        except NetatmoAuthErrorTokenExpired as e:
-            log.error(e)
-            exit(1)
-        except NetatmoAuthError as e:
-            log.error(f"Auth Error: {e}. Retrying in {interval} second(s)...")
-            sleep(interval)
-
-
 def get_sensor_data(_sensor_data: dict, _station_name: str, _module_name: str, _module_type: str) -> None:
     if _sensor_data is not None:
         for _sensor, _value in _sensor_data.items():
@@ -150,7 +138,7 @@ if __name__ == "__main__":
         signal.signal(signal.SIGINT, shutdown)
 
     interval = int(config.get("interval", "300"))  # interval in seconds; default are 5 Minutes
-    loglevel = config.get("loglevel", "INFO")  # set loglevel by Name
+    log_level = config.get("loglevel", "INFO")  # set loglevel by Name
     listen_port = config.get("listen_port", "9126")  # set loglevel for batching (influx)
 
     if "netatmo" in config:
@@ -161,7 +149,7 @@ if __name__ == "__main__":
     # Environment Variables takes precedence over config if set
     # global
     interval = int(getenv("INTERVAL", interval))
-    loglevel = getenv("LOGLEVEL", loglevel)
+    log_level = getenv("LOGLEVEL", VerbosityLevel(args.verbosity).name if args.verbosity > 0 else log_level)
     listen_port = getenv("LISTEN_PORT", listen_port)
     # netatmo
     client_id = getenv("NETATMO_CLIENT_ID", client_id)
@@ -170,19 +158,26 @@ if __name__ == "__main__":
     refresh_token = getenv("NETATMO_REFRESH_TOKEN", refresh_token)
 
     # Configure logging
-    log = configure_logging(args.verbosity, loglevel)
+    logger = logging.getLogger(__name__)
+    log = configure_logging(logger, log_level)
 
     if client_id is None or client_secret is None or refresh_token is None:
         log.error("No credentials supplied. No Netatmo Account available.")
         exit(1)
 
+    api = NetatmoAPI(
+        client_id=client_id,
+        client_secret=client_secret,
+        refresh_token=refresh_token,
+        token_file=args.token_file,
+        log_level=log_level,
+    )
+
     start_http_server(int(listen_port))
     log.info("Exporter ready...")
     while running:
-        authorization = get_authorization(client_id, client_secret, refresh_token)
         try:
             # Fetch weather station data
-            api = NetatmoWeatherStationAPI(authorization)
             api.get_stations_data()
 
             stations = api.get_stations()
@@ -249,7 +244,6 @@ if __name__ == "__main__":
             log.error(f"API Error. Retry in {interval} second(s)...")
             log.debug(error)
         except NetatmoAuthError as error:
-            log.error(f"Auth Error. Retry in {interval} second(s)...")
-            log.debug(error)
+            log.error(f"Auth Error: {error}. Retry in {interval} second(s)...")
         finally:
             sleep(interval)
