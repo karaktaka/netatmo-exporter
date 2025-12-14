@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 39,
+  "id": 0,
   "links": [],
   "panels": [
     {
@@ -124,8 +124,8 @@
                 "uid": "${datasource}"
               },
               "disableTextWrap": false,
-              "editorMode": "builder",
-              "expr": "netatmo_temperature{station=\"$station\", module=\"$module\"}",
+              "editorMode": "code",
+              "expr": "netatmo_temperature{home=\"${home}\", station=\"$station\", module=\"$temperature_module\"}",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -226,8 +226,8 @@
                 "uid": "${datasource}"
               },
               "disableTextWrap": false,
-              "editorMode": "builder",
-              "expr": "netatmo_humidity{station=\"$station\", module=\"$module\"}",
+              "editorMode": "code",
+              "expr": "netatmo_humidity{home=\"${home}\", station=\"$station\", module=\"$temperature_module\"}",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -330,8 +330,8 @@
                 "uid": "${datasource}"
               },
               "disableTextWrap": false,
-              "editorMode": "builder",
-              "expr": "netatmo_rf_status{station=\"$station\", module=\"$module\"} * -1",
+              "editorMode": "code",
+              "expr": "netatmo_rf_status{home=\"${home}\", station=\"$station\", module=\"$temperature_module\"} * -1",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -428,8 +428,8 @@
                 "uid": "${datasource}"
               },
               "disableTextWrap": false,
-              "editorMode": "builder",
-              "expr": "netatmo_battery_percent{station=\"$station\", module=\"$module\"}",
+              "editorMode": "code",
+              "expr": "netatmo_battery_percent{home=\"${home}\", station=\"$station\", module=\"$temperature_module\"}",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -540,8 +540,8 @@
                 "uid": "${datasource}"
               },
               "disableTextWrap": false,
-              "editorMode": "builder",
-              "expr": "netatmo_temperature{station=\"$station\", module=\"$module\"}",
+              "editorMode": "code",
+              "expr": "netatmo_temperature{home=\"${home}\", station=\"$station\", module=\"$temperature_module\"}",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -637,8 +637,8 @@
                 "uid": "${datasource}"
               },
               "disableTextWrap": false,
-              "editorMode": "builder",
-              "expr": "max(netatmo_temperature{station=\"$station\", module=\"$module\"})",
+              "editorMode": "code",
+              "expr": "max(netatmo_temperature{home=\"${home}\", station=\"$station\", module=\"$temperature_module\"})",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -750,8 +750,8 @@
                 "uid": "${datasource}"
               },
               "disableTextWrap": false,
-              "editorMode": "builder",
-              "expr": "netatmo_humidity{station=\"$station\", module=\"$module\"}",
+              "editorMode": "code",
+              "expr": "netatmo_humidity{home=\"${home}\", station=\"$station\", module=\"$temperature_module\"}",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -847,8 +847,8 @@
                 "uid": "${datasource}"
               },
               "disableTextWrap": false,
-              "editorMode": "builder",
-              "expr": "min(netatmo_humidity{station=\"$station\", module=\"$module\"})",
+              "editorMode": "code",
+              "expr": "min(netatmo_humidity{home=\"${home}\", station=\"$station\", module=\"$temperature_module\"})",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -944,8 +944,8 @@
                 "uid": "${datasource}"
               },
               "disableTextWrap": false,
-              "editorMode": "builder",
-              "expr": "avg(netatmo_temperature{station=\"$station\", module=\"$module\"})",
+              "editorMode": "code",
+              "expr": "avg(netatmo_temperature{home=\"${home}\", station=\"$station\", module=\"$temperature_module\"})",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -1041,8 +1041,8 @@
                 "uid": "${datasource}"
               },
               "disableTextWrap": false,
-              "editorMode": "builder",
-              "expr": "avg(netatmo_humidity{station=\"$station\", module=\"$module\"})",
+              "editorMode": "code",
+              "expr": "avg(netatmo_humidity{home=\"${home}\", station=\"$station\", module=\"$temperature_module\"})",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -1139,8 +1139,8 @@
                 "uid": "${datasource}"
               },
               "disableTextWrap": false,
-              "editorMode": "builder",
-              "expr": "min(netatmo_temperature{station=\"$station\", module=\"$module\"})",
+              "editorMode": "code",
+              "expr": "min(netatmo_temperature{home=\"${home}\", station=\"$station\", module=\"$temperature_module\"})",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -1237,8 +1237,8 @@
                 "uid": "${datasource}"
               },
               "disableTextWrap": false,
-              "editorMode": "builder",
-              "expr": "max(netatmo_humidity{station=\"$station\", module=\"$module\"})",
+              "editorMode": "code",
+              "expr": "max(netatmo_humidity{home=\"${home}\", station=\"$station\", module=\"$temperature_module\"})",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -1800,7 +1800,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "netatmo_temperature{home=\"$home\",station=\"$station\",type=\"NAModule1\"}",
+          "expr": "netatmo_temperature{home=\"$home\", station=\"$station\", type=\"NAModule1\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -1905,7 +1905,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "netatmo_temperature_trend{home=\"$home\",station=\"$station\",type=\"NAModule1\"}",
+          "expr": "netatmo_temperature_trend{home=\"$home\", station=\"$station\", type=\"NAModule1\"}",
           "format": "time_series",
           "fullMetaSearch": false,
           "hide": false,
@@ -2016,7 +2016,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "netatmo_humidity{home=\"$home\",station=\"$station\",type=\"NAModule1\"}",
+          "expr": "netatmo_humidity{home=\"$home\", station=\"$station\", type=\"NAModule1\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -2106,7 +2106,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "netatmo_humidity{home=\"$home\",station=\"$station\",type=\"NAModule1\"}",
+          "expr": "netatmo_humidity{home=\"$home\", station=\"$station\", type=\"NAModule1\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -2462,7 +2462,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "netatmo_temperature{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"}",
+          "expr": "netatmo_temperature{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -2539,7 +2539,7 @@
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "netatmo_temperature{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"}",
+          "expr": "netatmo_temperature{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -2616,7 +2616,7 @@
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "min(netatmo_temperature{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
+          "expr": "min(netatmo_temperature{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -2693,7 +2693,7 @@
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "avg(netatmo_temperature{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
+          "expr": "avg(netatmo_temperature{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -2770,7 +2770,7 @@
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "max(netatmo_temperature{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
+          "expr": "max(netatmo_temperature{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -2875,7 +2875,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "netatmo_co2{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"}",
+          "expr": "netatmo_co2{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -2948,7 +2948,7 @@
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "netatmo_co2{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"}",
+          "expr": "netatmo_co2{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3021,7 +3021,7 @@
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "min(netatmo_co2{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
+          "expr": "min(netatmo_co2{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3094,7 +3094,7 @@
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "avg(netatmo_co2{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
+          "expr": "avg(netatmo_co2{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3167,7 +3167,7 @@
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "max(netatmo_co2{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
+          "expr": "max(netatmo_co2{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3272,7 +3272,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "netatmo_humidity{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"}",
+          "expr": "netatmo_humidity{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"}",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -3349,7 +3349,7 @@
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "netatmo_humidity{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"}",
+          "expr": "netatmo_humidity{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3426,7 +3426,7 @@
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "min(netatmo_humidity{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
+          "expr": "min(netatmo_humidity{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3503,7 +3503,7 @@
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "avg(netatmo_humidity{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
+          "expr": "avg(netatmo_humidity{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3580,7 +3580,7 @@
         {
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "max(netatmo_humidity{home=\"$home\",station=\"$station\",type=~\"NAMain|NAModule4\"})",
+          "expr": "max(netatmo_humidity{home=\"$home\", station=\"$station\", type=~\"NAMain|NAModule4\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{module}}",
@@ -3671,7 +3671,7 @@
             "h": 6,
             "w": 12,
             "x": 0,
-            "y": 33
+            "y": 44
           },
           "id": 196,
           "options": {
@@ -3700,7 +3700,7 @@
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "netatmo_rain{home=\"$home\",station=\"$station\",type=\"NAModule3\"}",
+              "expr": "netatmo_rain{home=\"$home\", station=\"$station\", type=\"NAModule3\"}",
               "hide": false,
               "instant": false,
               "legendFormat": "{{station}}",
@@ -3750,7 +3750,7 @@
             "h": 3,
             "w": 3,
             "x": 12,
-            "y": 33
+            "y": 44
           },
           "hideTimeOverride": true,
           "id": 197,
@@ -3782,7 +3782,7 @@
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "netatmo_rain_1h{home=\"$home\",station=\"$station\",type=\"NAModule3\"}",
+              "expr": "netatmo_rain_1h{home=\"$home\", station=\"$station\", type=\"NAModule3\"}",
               "hide": false,
               "instant": true,
               "legendFormat": "__auto",
@@ -3848,7 +3848,7 @@
             "h": 3,
             "w": 9,
             "x": 15,
-            "y": 33
+            "y": 44
           },
           "id": 227,
           "options": {
@@ -3884,7 +3884,7 @@
               },
               "disableTextWrap": false,
               "editorMode": "code",
-              "expr": "netatmo_rf_status{home=\"$home\",station=\"$station\",type=\"NAModule3\"} * -1",
+              "expr": "netatmo_rf_status{home=\"$home\", station=\"$station\", type=\"NAModule3\"} * -1",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -3937,7 +3937,7 @@
             "h": 3,
             "w": 3,
             "x": 12,
-            "y": 36
+            "y": 47
           },
           "hideTimeOverride": true,
           "id": 198,
@@ -4029,7 +4029,7 @@
             "h": 3,
             "w": 9,
             "x": 15,
-            "y": 36
+            "y": 47
           },
           "id": 228,
           "options": {
@@ -4065,7 +4065,7 @@
               },
               "disableTextWrap": false,
               "editorMode": "code",
-              "expr": "netatmo_battery_percent{home=\"$home\",station=\"$station\",type=\"NAModule3\"}",
+              "expr": "netatmo_battery_percent{home=\"$home\", station=\"$station\", type=\"NAModule3\"}",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -4162,7 +4162,7 @@
             "h": 6,
             "w": 7,
             "x": 0,
-            "y": 40
+            "y": 51
           },
           "id": 199,
           "options": {
@@ -4191,7 +4191,7 @@
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "netatmo_wind_strength{home=\"$home\",station=\"$station\",type=\"NAModule2\"}",
+              "expr": "netatmo_wind_strength{home=\"$home\", station=\"$station\", type=\"NAModule2\"}",
               "hide": false,
               "instant": false,
               "legendFormat": "{{module}}",
@@ -4407,7 +4407,7 @@
             "h": 6,
             "w": 2,
             "x": 7,
-            "y": 40
+            "y": 51
           },
           "hideTimeOverride": true,
           "id": 202,
@@ -4438,7 +4438,7 @@
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "netatmo_wind_angle{home=\"$home\",station=\"$station\",type=\"NAModule2\"}",
+              "expr": "netatmo_wind_angle{home=\"$home\", station=\"$station\", type=\"NAModule2\"}",
               "hide": false,
               "instant": false,
               "legendFormat": "__auto",
@@ -4518,7 +4518,7 @@
             "h": 6,
             "w": 7,
             "x": 9,
-            "y": 40
+            "y": 51
           },
           "id": 200,
           "options": {
@@ -4547,7 +4547,7 @@
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "netatmo_gust_strength{home=\"$home\",station=\"$station\",type=\"NAModule2\"}",
+              "expr": "netatmo_gust_strength{home=\"$home\", station=\"$station\", type=\"NAModule2\"}",
               "hide": false,
               "instant": false,
               "legendFormat": "{{module}}",
@@ -4763,7 +4763,7 @@
             "h": 6,
             "w": 2,
             "x": 16,
-            "y": 40
+            "y": 51
           },
           "hideTimeOverride": true,
           "id": 203,
@@ -4794,7 +4794,7 @@
                 "uid": "${datasource}"
               },
               "editorMode": "code",
-              "expr": "netatmo_gust_angle{home=\"$home\",station=\"$station\",type=\"NAModule2\"}",
+              "expr": "netatmo_gust_angle{home=\"$home\", station=\"$station\", type=\"NAModule2\"}",
               "hide": false,
               "instant": false,
               "legendFormat": "__auto",
@@ -4860,7 +4860,7 @@
             "h": 3,
             "w": 6,
             "x": 18,
-            "y": 40
+            "y": 51
           },
           "id": 229,
           "options": {
@@ -4896,7 +4896,7 @@
               },
               "disableTextWrap": false,
               "editorMode": "code",
-              "expr": "netatmo_rf_status{home=\"$home\",station=\"$station\",type=\"NAModule2\"} * -1",
+              "expr": "netatmo_rf_status{home=\"$home\", station=\"$station\", type=\"NAModule2\"} * -1",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -4958,7 +4958,7 @@
             "h": 3,
             "w": 6,
             "x": 18,
-            "y": 43
+            "y": 54
           },
           "id": 230,
           "options": {
@@ -4994,7 +4994,7 @@
               },
               "disableTextWrap": false,
               "editorMode": "code",
-              "expr": "netatmo_battery_percent{home=\"$home\",station=\"$station\",type=\"NAModule2\"}",
+              "expr": "netatmo_battery_percent{home=\"$home\", station=\"$station\", type=\"NAModule2\"}",
               "fullMetaSearch": false,
               "hide": false,
               "includeNullMetadata": true,
@@ -5116,5 +5116,5 @@
   "timezone": "",
   "title": "Netatmo Weather Station",
   "uid": "de9vhuqlsexa8f",
-  "version": 27
+  "version": 29
 }
