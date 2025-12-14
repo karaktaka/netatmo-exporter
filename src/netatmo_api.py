@@ -6,6 +6,7 @@ Implements OAuth2 token refresh and weather station data fetching.
 
 import json
 import logging
+import time
 from typing import Any, Dict, Optional, Tuple
 
 import requests
@@ -69,14 +70,14 @@ class NetatmoAuth:
         self.token_file = token_file
         self.refresh_token = refresh_token
         self.access_token: Optional[str] = None
-        self.token_expires_in: Optional[int] = None
+        self.token_expires_at: Optional[float] = None
 
         try:
             with open(self.token_file, "r+") as _f:
                 _token_data = json.load(_f)
                 self.access_token = _token_data.get("access_token")
                 self.refresh_token = _token_data.get("refresh_token")
-                self.token_expires_in = _token_data.get("expiration")
+                self.token_expires_at = _token_data.get("expires_at")
         except (FileNotFoundError, json.JSONDecodeError):
             LOG.info("No existing token file found, will create a new one upon refresh.")
 
@@ -122,7 +123,9 @@ class NetatmoAuth:
 
             token_data = response.json()
             self.access_token = token_data.get("access_token")
-            self.token_expires_in = token_data.get("expires_in")
+            expires_in = token_data.get("expires_in")
+            # Calculate absolute expiration timestamp
+            self.token_expires_at = time.time() + expires_in if expires_in else None
             new_refresh_token = token_data.get("refresh_token", self.refresh_token)
 
             if new_refresh_token != self.refresh_token:
@@ -132,12 +135,12 @@ class NetatmoAuth:
             _token = {
                 "access_token": self.access_token,
                 "refresh_token": self.refresh_token,
-                "expiration": self.token_expires_in,
+                "expires_at": self.token_expires_at,
             }
             with open(self.token_file, "w") as _f:
                 _f.write(json.dumps(_token, indent=2))
 
-            return self.access_token, self.refresh_token, self.token_expires_in
+            return self.access_token, self.refresh_token, self.token_expires_at
 
         except requests.exceptions.RequestException as e:
             raise NetatmoAuthError(f"Failed to refresh token: {e}") from e
@@ -145,7 +148,13 @@ class NetatmoAuth:
     @property
     def headers(self) -> Dict[str, str]:
         """Get authorization headers for API requests."""
-        if not self.access_token or (self.token_expires_in and self.token_expires_in <= 60):
+        # Check if token is expired or expires within 60 seconds
+        time_until_expiration = float("inf")
+        if self.token_expires_at is not None:
+            time_until_expiration = self.token_expires_at - time.time()
+        LOG.debug(f"Time until token expiration: {time_until_expiration} seconds")
+
+        if not self.access_token or time_until_expiration <= 60:
             self.refresh()
 
         return {
