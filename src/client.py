@@ -3,7 +3,6 @@
 
 import argparse
 import json
-import logging
 import signal
 from enum import Enum
 from os import getenv
@@ -15,6 +14,7 @@ import requests
 import yaml
 from prometheus_client import Gauge, start_http_server
 
+from helpers import configure_logging
 from netatmo_api import (
     NetatmoAPIError,
     NetatmoAuth,
@@ -23,6 +23,40 @@ from netatmo_api import (
     NetatmoThrottlingError,
     NetatmoWeatherStationAPI,
 )
+
+# Prometheus Metrics
+STATION_REACHABLE = Gauge(
+    "netatmo_station_reachable", "If the station is reachable", ["station", "type", "city", "country", "timezone"]
+)
+STATION_LONGITUDE = Gauge("netatmo_station_longitude", "The Longitude of the Station", ["station", "type"])
+STATION_LATITUDE = Gauge("netatmo_station_latitude", "The Latitude of the Station", ["station", "type"])
+STATION_ALTITUDE = Gauge("netatmo_station_altitude", "The Altitude of the Station", ["station", "type"])
+STATION_WIFI_STATUS = Gauge("netatmo_station_wifi_status", "The current Wifi Status", ["station", "type"])
+STATION_CO2_CALIBRATING = Gauge(
+    "netatmo_station_co2_calibrating", "The current CO2 Calibrating Status", ["station", "type"]
+)
+TEMPERATURE = Gauge("netatmo_temperature", "The current Temperature", ["station", "module", "type"])
+MIN_TEMP = Gauge("netatmo_temperature_min", "The current Min Temperature", ["station", "module", "type"])
+MAX_TEMP = Gauge("netatmo_temperature_max", "The current Max Temperature", ["station", "module", "type"])
+TEMP_TREND = Gauge("netatmo_temperature_trend", "The current Temperature Trend", ["station", "module", "type"])
+HUMIDITY = Gauge("netatmo_humidity", "The current Humidity", ["station", "module", "type"])
+CO2 = Gauge("netatmo_co2", "The current CO2", ["station", "module", "type"])
+PRESSURE = Gauge("netatmo_pressure", "The current Pressure", ["station", "module", "type"])
+PRESSURE_TREND = Gauge("netatmo_pressure_trend", "The current Pressure Trend", ["station", "module", "type"])
+ABSOLUTEPRESSURE = Gauge("netatmo_absolute_pressure", "The current Absolute Pressure", ["station", "module", "type"])
+NOISE = Gauge("netatmo_noise", "The current Noise", ["station", "module", "type"])
+RF_STATUS = Gauge("netatmo_rf_status", "The current RF Status", ["station", "module", "type"])
+BATTERY_VP = Gauge("netatmo_battery_vp", "The current Battery VP", ["station", "module", "type"])
+BATTERY_PERCENT = Gauge("netatmo_battery_percent", "The current Battery Percent", ["station", "module", "type"])
+WINDANGLE = Gauge("netatmo_wind_angle", "The current Wind Angle", ["station", "module", "type"])
+WINDSTRENGTH = Gauge("netatmo_wind_strength", "The current Wind Strength", ["station", "module", "type"])
+MAX_WIND_ANGLE = Gauge("netatmo_wind_max_angle", "The current Wind Max Angle", ["station", "module", "type"])
+MAX_WIND_STR = Gauge("netatmo_wind_max_strength", "The current Wind Max Strength", ["station", "module", "type"])
+GUSTANGLE = Gauge("netatmo_gust_angle", "The current Gust Angle", ["station", "module", "type"])
+GUSTSTRENGTH = Gauge("netatmo_gust_strength", "The current Gust Strength", ["station", "module", "type"])
+RAIN = Gauge("netatmo_rain", "The current Rain", ["station", "module", "type"])
+SUM_RAIN_1 = Gauge("netatmo_rain_1h", "Rain over the last 1h", ["station", "module", "type"])
+SUM_RAIN_24 = Gauge("netatmo_rain_24h", "Rain over the last 24h", ["station", "module", "type"])
 
 
 class TrendState(Enum):
@@ -56,33 +90,6 @@ def parse_args():
     parser.add_argument("-v", "--verbose", dest="verbosity", action="count", default=0)
 
     return parser.parse_args()
-
-
-def set_logging_level(_verbosity, _level, _logger=None):
-    _switcher = {
-        1: "WARNING",
-        2: "INFO",
-        3: "DEBUG",
-    }
-    if _verbosity > 0:
-        _level = _switcher.get(_verbosity)
-
-    _fmt = logging.Formatter(
-        "%(asctime)s - %(module)s:%(lineno)d - %(levelname)s:%(message)s", datefmt="%d.%m.%Y %H:%M:%S"
-    )
-
-    # Logger
-    if _logger is None:
-        _logger = logging.getLogger(__name__)
-
-    _ch = logging.StreamHandler()
-    _ch.setFormatter(_fmt)
-
-    _logger.addHandler(_ch)
-    _logger.setLevel(_level)
-    _logger.info(f"Setting loglevel to {_level}.")
-
-    return _logger
 
 
 def safe_list_get(_input_list: list, _idx: int, _default=None) -> Optional[str | int | float]:
@@ -162,48 +169,12 @@ if __name__ == "__main__":
     # refresh_token needs to be persisted in the config, but can be set as env var for first run
     refresh_token = getenv("NETATMO_REFRESH_TOKEN", refresh_token)
 
-    # set logging level
-    log = set_logging_level(args.verbosity, loglevel)
+    # Configure logging
+    log = configure_logging(args.verbosity, loglevel)
 
     if client_id is None or client_secret is None or refresh_token is None:
         log.error("No credentials supplied. No Netatmo Account available.")
         exit(1)
-
-    # Prometheus Metrics
-    STATION_REACHABLE = Gauge(
-        "netatmo_station_reachable", "If the station is reachable", ["station", "type", "city", "country", "timezone"]
-    )
-    STATION_LONGITUDE = Gauge("netatmo_station_longitude", "The Longitude of the Station", ["station", "type"])
-    STATION_LATITUDE = Gauge("netatmo_station_latitude", "The Latitude of the Station", ["station", "type"])
-    STATION_ALTITUDE = Gauge("netatmo_station_altitude", "The Altitude of the Station", ["station", "type"])
-    STATION_WIFI_STATUS = Gauge("netatmo_station_wifi_status", "The current Wifi Status", ["station", "type"])
-    STATION_CO2_CALIBRATING = Gauge(
-        "netatmo_station_co2_calibrating", "The current CO2 Calibrating Status", ["station", "type"]
-    )
-    TEMPERATURE = Gauge("netatmo_temperature", "The current Temperature", ["station", "module", "type"])
-    MIN_TEMP = Gauge("netatmo_temperature_min", "The current Min Temperature", ["station", "module", "type"])
-    MAX_TEMP = Gauge("netatmo_temperature_max", "The current Max Temperature", ["station", "module", "type"])
-    TEMP_TREND = Gauge("netatmo_temperature_trend", "The current Temperature Trend", ["station", "module", "type"])
-    HUMIDITY = Gauge("netatmo_humidity", "The current Humidity", ["station", "module", "type"])
-    CO2 = Gauge("netatmo_co2", "The current CO2", ["station", "module", "type"])
-    PRESSURE = Gauge("netatmo_pressure", "The current Pressure", ["station", "module", "type"])
-    PRESSURE_TREND = Gauge("netatmo_pressure_trend", "The current Pressure Trend", ["station", "module", "type"])
-    ABSOLUTEPRESSURE = Gauge(
-        "netatmo_absolute_pressure", "The current Absolute Pressure", ["station", "module", "type"]
-    )
-    NOISE = Gauge("netatmo_noise", "The current Noise", ["station", "module", "type"])
-    RF_STATUS = Gauge("netatmo_rf_status", "The current RF Status", ["station", "module", "type"])
-    BATTERY_VP = Gauge("netatmo_battery_vp", "The current Battery VP", ["station", "module", "type"])
-    BATTERY_PERCENT = Gauge("netatmo_battery_percent", "The current Battery Percent", ["station", "module", "type"])
-    WINDANGLE = Gauge("netatmo_wind_angle", "The current Wind Angle", ["station", "module", "type"])
-    WINDSTRENGTH = Gauge("netatmo_wind_strength", "The current Wind Strength", ["station", "module", "type"])
-    MAX_WIND_ANGLE = Gauge("netatmo_wind_max_angle", "The current Wind Max Angle", ["station", "module", "type"])
-    MAX_WIND_STR = Gauge("netatmo_wind_max_strength", "The current Wind Max Strength", ["station", "module", "type"])
-    GUSTANGLE = Gauge("netatmo_gust_angle", "The current Gust Angle", ["station", "module", "type"])
-    GUSTSTRENGTH = Gauge("netatmo_gust_strength", "The current Gust Strength", ["station", "module", "type"])
-    RAIN = Gauge("netatmo_rain", "The current Rain", ["station", "module", "type"])
-    SUM_RAIN_1 = Gauge("netatmo_rain_1h", "Rain over the last 1h", ["station", "module", "type"])
-    SUM_RAIN_24 = Gauge("netatmo_rain_24h", "Rain over the last 24h", ["station", "module", "type"])
 
     start_http_server(int(listen_port))
     log.info("Exporter ready...")
