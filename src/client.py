@@ -112,8 +112,8 @@ def safe_list_get(_input_list: list, _idx: int, _default=None) -> Optional[str |
 
 
 def shutdown(_signal):
-    global running
-    running = False
+    global RUNNING
+    RUNNING = False
 
 
 def get_sensor_data(
@@ -131,128 +131,144 @@ def get_sensor_data(
             globals()[_sensor.upper()].labels(_home_name, _station_name, _module_name, _module_type).set(_value)
 
 
+def main(_api: NetatmoAPI, _interval: int, _log: logging.Logger) -> None:
+    while RUNNING:
+        try:
+            # Fetch weather station data
+            _api.get_stations_data()
+
+            _stations = _api.get_stations()
+
+            for _station_id, _station in _stations.items():
+                _log.debug(f"Station Data: {_station}")
+                _home_name = _station.get("home_name", "Unknown")
+                _station_name = _station.get("station_name", "Unknown")
+                _station_module_name = _station.get("module_name", "Unknown")
+                _station_module_type = _station.get("type", "Unknown")
+                _station_place = _station.get("place", {})
+                _station_country = _station_place.get("country", "Unknown")
+                _station_timezone = _station_place.get("timezone", "Unknown")
+                _station_city = _station_place.get("city", "Unknown")
+                _station_long_lat = _station_place.get("location", [])
+
+                _station_data = {
+                    "altitude": _station_place.get("altitude"),
+                    "longitude": safe_list_get(_station_long_lat, 0),
+                    "latitude": safe_list_get(_station_long_lat, 1),
+                }
+
+                for _key, _value in _station_data.items():
+                    globals()[f"STATION_{_key.upper()}"].labels(_home_name, _station_name, _station_module_type).set(
+                        _value
+                    )
+
+                _station_sensor_data = _station.get("dashboard_data")
+
+                if _station_sensor_data is None:
+                    continue
+
+                STATION_REACHABLE.labels(
+                    _home_name, _station_name, _station_module_type, _station_city, _station_country, _station_timezone
+                ).set(_station.get("reachable"))
+
+                for _sensor in ["wifi_status", "co2_calibrating"]:
+                    globals()[f"STATION_{_sensor.upper()}"].labels(_home_name, _station_name, _station_module_type).set(
+                        _station.get(_sensor)
+                    )
+
+                get_sensor_data(
+                    _station_sensor_data, _home_name, _station_name, _station_module_name, _station_module_type
+                )
+
+                for _module in _station.get("modules", []):
+                    _log.debug(f"Module Data: {_module}")
+                    _module_name = _module.get("module_name")
+                    _module_type = _module.get("type")
+
+                    _module_sensor_data = _module.get("dashboard_data")
+
+                    if _module_sensor_data is None:
+                        continue
+
+                    for _sensor in ["rf_status", "battery_vp", "battery_percent"]:
+                        globals()[f"{_sensor.upper()}"].labels(
+                            _home_name, _station_name, _module_name, _module_type
+                        ).set(_module.get(_sensor))
+
+                    get_sensor_data(_module_sensor_data, _home_name, _station_name, _module_name, _module_type)
+        except (json.decoder.JSONDecodeError, requests.exceptions.JSONDecodeError) as _error:
+            _log.error(f"JSON Decode Error. Retry in {_interval} second(s)...")
+            _log.debug(_error)
+        except NetatmoThrottlingError as _error:
+            _log.error(f"API Throttling. Retry in {_interval} second(s)...")
+            _log.debug(_error)
+        except NetatmoAPIError as _error:
+            _log.error(f"API Error. Retry in {_interval} second(s)...")
+            _log.debug(_error)
+        except NetatmoAuthError as _error:
+            _log.error(f"Auth Error: {_error}. Retry in {_interval} second(s)...")
+        finally:
+            sleep(_interval)
+
+
 if __name__ == "__main__":
-    running = True
+    RUNNING = True
     client_id = None
     client_secret = None
     refresh_token = None
     args = parse_args()
     config = parse_config(args.config_file)
 
-    if getenv("TERM", None):
-        # noinspection PyTypeChecker
-        signal.signal(signal.SIGTERM, shutdown)
-        # noinspection PyTypeChecker
-        signal.signal(signal.SIGINT, shutdown)
+    try:
+        if getenv("TERM", None):
+            # noinspection PyTypeChecker
+            signal.signal(signal.SIGTERM, shutdown)
+            # noinspection PyTypeChecker
+            signal.signal(signal.SIGINT, shutdown)
 
-    interval = int(config.get("interval", "300"))  # interval in seconds; default are 5 Minutes
-    log_level = config.get("loglevel", "INFO")  # set loglevel by Name
-    listen_port = config.get("listen_port", "9126")  # set loglevel for batching (influx)
+        interval = int(config.get("interval", "300"))  # interval in seconds; default are 5 Minutes
+        log_level = config.get("loglevel", "INFO")  # set loglevel by Name
+        listen_port = config.get("listen_port", "9126")  # set loglevel for batching (influx)
 
-    if "netatmo" in config:
-        client_id = config.get("netatmo").get("client_id", None)
-        client_secret = config.get("netatmo").get("client_secret", None)
-        refresh_token = config.get("netatmo").get("refresh_token", None)
+        if "netatmo" in config:
+            client_id = config.get("netatmo").get("client_id", None)
+            client_secret = config.get("netatmo").get("client_secret", None)
+            refresh_token = config.get("netatmo").get("refresh_token", None)
 
-    # Environment Variables takes precedence over config if set
-    # global
-    interval = int(getenv("INTERVAL", interval))
-    log_level = getenv("LOGLEVEL", VerbosityLevel(args.verbosity).name if args.verbosity > 0 else log_level)
-    listen_port = getenv("LISTEN_PORT", listen_port)
-    # netatmo
-    client_id = getenv("NETATMO_CLIENT_ID", client_id)
-    client_secret = getenv("NETATMO_CLIENT_SECRET", client_secret)
-    # refresh_token needs to be persisted in the config, but can be set as env var for first run
-    refresh_token = getenv("NETATMO_REFRESH_TOKEN", refresh_token)
+        # Environment Variables takes precedence over config if set
+        # global
+        interval = int(getenv("INTERVAL", interval))
+        log_level = getenv("LOGLEVEL", VerbosityLevel(args.verbosity).name if args.verbosity > 0 else log_level)
+        listen_port = getenv("LISTEN_PORT", listen_port)
+        # netatmo
+        client_id = getenv("NETATMO_CLIENT_ID", client_id)
+        client_secret = getenv("NETATMO_CLIENT_SECRET", client_secret)
+        # refresh_token needs to be persisted in the config, but can be set as env var for first run
+        refresh_token = getenv("NETATMO_REFRESH_TOKEN", refresh_token)
 
-    # Configure logging
-    logger = logging.getLogger(__name__)
-    log = configure_logging(logger, log_level)
+        # Configure logging
+        logger = logging.getLogger(__name__)
+        log = configure_logging(logger, log_level)
 
-    if client_id is None or client_secret is None or refresh_token is None:
-        log.error("No credentials supplied. No Netatmo Account available.")
-        exit(1)
+        if client_id is None or client_secret is None or refresh_token is None:
+            log.error("No credentials supplied. No Netatmo Account available.")
+            exit(1)
 
-    api = NetatmoAPI(
-        client_id=client_id,
-        client_secret=client_secret,
-        refresh_token=refresh_token,
-        token_file=args.token_file,
-        log_level=log_level,
-    )
+        api = NetatmoAPI(
+            client_id=client_id,
+            client_secret=client_secret,
+            refresh_token=refresh_token,
+            token_file=args.token_file,
+            log_level=log_level,
+        )
 
-    start_http_server(int(listen_port))
-    log.info("Exporter ready...")
-    while running:
-        try:
-            # Fetch weather station data
-            api.get_stations_data()
-
-            stations = api.get_stations()
-
-            for station_id, station in stations.items():
-                log.debug(f"Station Data: {station}")
-                home_name = station.get("home_name", "Unknown")
-                station_name = station.get("station_name", "Unknown")
-                station_module_name = station.get("module_name", "Unknown")
-                station_module_type = station.get("type", "Unknown")
-                station_place = station.get("place", {})
-                station_country = station_place.get("country", "Unknown")
-                station_timezone = station_place.get("timezone", "Unknown")
-                station_city = station_place.get("city", "Unknown")
-                station_long_lat = station_place.get("location", [])
-
-                station_data = {
-                    "altitude": station_place.get("altitude"),
-                    "longitude": safe_list_get(station_long_lat, 0),
-                    "latitude": safe_list_get(station_long_lat, 1),
-                }
-
-                for key, value in station_data.items():
-                    globals()[f"STATION_{key.upper()}"].labels(home_name, station_name, station_module_type).set(value)
-
-                station_sensor_data = station.get("dashboard_data")
-
-                if station_sensor_data is None:
-                    continue
-
-                STATION_REACHABLE.labels(
-                    home_name, station_name, station_module_type, station_city, station_country, station_timezone
-                ).set(station.get("reachable"))
-
-                for sensor in ["wifi_status", "co2_calibrating"]:
-                    globals()[f"STATION_{sensor.upper()}"].labels(home_name, station_name, station_module_type).set(
-                        station.get(sensor)
-                    )
-
-                get_sensor_data(station_sensor_data, home_name, station_name, station_module_name, station_module_type)
-
-                for module in station.get("modules", []):
-                    log.debug(f"Module Data: {module}")
-                    module_name = module.get("module_name")
-                    module_type = module.get("type")
-
-                    module_sensor_data = module.get("dashboard_data")
-
-                    if module_sensor_data is None:
-                        continue
-
-                    for sensor in ["rf_status", "battery_vp", "battery_percent"]:
-                        globals()[f"{sensor.upper()}"].labels(home_name, station_name, module_name, module_type).set(
-                            module.get(sensor)
-                        )
-
-                    get_sensor_data(module_sensor_data, home_name, station_name, module_name, module_type)
-        except (json.decoder.JSONDecodeError, requests.exceptions.JSONDecodeError) as error:
-            log.error(f"JSON Decode Error. Retry in {interval} second(s)...")
-            log.debug(error)
-        except NetatmoThrottlingError as error:
-            log.error(f"API Throttling. Retry in {interval} second(s)...")
-            log.debug(error)
-        except NetatmoAPIError as error:
-            log.error(f"API Error. Retry in {interval} second(s)...")
-            log.debug(error)
-        except NetatmoAuthError as error:
-            log.error(f"Auth Error: {error}. Retry in {interval} second(s)...")
-        finally:
-            sleep(interval)
+        start_http_server(int(listen_port))
+        log.info("Exporter ready...")
+        main(api, interval, log)
+    except KeyboardInterrupt:
+        print("Received interrupt signal, shutting down...")
+    except Exception as error:
+        print(f"Fatal error: {error}")
+        raise
+    finally:
+        RUNNING = False
