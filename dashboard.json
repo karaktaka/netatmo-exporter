@@ -5024,10 +5024,7 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "text": "prometheus",
-          "value": "ce8ohjynfvmrka"
-        },
+        "current": {},
         "hide": 2,
         "includeAll": false,
         "name": "datasource",
@@ -5039,10 +5036,7 @@
       },
       {
         "allowCustomValue": false,
-        "current": {
-          "text": "Zuhause",
-          "value": "Zuhause"
-        },
+        "current": {},
         "definition": "label_values(netatmo_station_reachable,home)",
         "includeAll": false,
         "label": "Home",
@@ -5059,10 +5053,7 @@
       },
       {
         "allowCustomValue": false,
-        "current": {
-          "text": "Zuhause (Wohnzimmer)",
-          "value": "Zuhause (Wohnzimmer)"
-        },
+        "current": {},
         "datasource": {
           "type": "prometheus",
           "uid": "${datasource}"
@@ -5083,10 +5074,7 @@
       },
       {
         "allowCustomValue": false,
-        "current": {
-          "text": "Außen",
-          "value": "Außen"
-        },
+        "current": {},
         "datasource": {
           "type": "prometheus",
           "uid": "${datasource}"
