@@ -25,37 +25,43 @@ from netatmo_api import (
 
 # Prometheus Metrics
 STATION_REACHABLE = Gauge(
-    "netatmo_station_reachable", "If the station is reachable", ["station", "type", "city", "country", "timezone"]
+    "netatmo_station_reachable",
+    "If the station is reachable",
+    ["home", "station", "type", "city", "country", "timezone"],
 )
-STATION_LONGITUDE = Gauge("netatmo_station_longitude", "The Longitude of the Station", ["station", "type"])
-STATION_LATITUDE = Gauge("netatmo_station_latitude", "The Latitude of the Station", ["station", "type"])
-STATION_ALTITUDE = Gauge("netatmo_station_altitude", "The Altitude of the Station", ["station", "type"])
-STATION_WIFI_STATUS = Gauge("netatmo_station_wifi_status", "The current Wifi Status", ["station", "type"])
+STATION_LONGITUDE = Gauge("netatmo_station_longitude", "The Longitude of the Station", ["home", "station", "type"])
+STATION_LATITUDE = Gauge("netatmo_station_latitude", "The Latitude of the Station", ["home", "station", "type"])
+STATION_ALTITUDE = Gauge("netatmo_station_altitude", "The Altitude of the Station", ["home", "station", "type"])
+STATION_WIFI_STATUS = Gauge("netatmo_station_wifi_status", "The current Wifi Status", ["home", "station", "type"])
 STATION_CO2_CALIBRATING = Gauge(
-    "netatmo_station_co2_calibrating", "The current CO2 Calibrating Status", ["station", "type"]
+    "netatmo_station_co2_calibrating", "The current CO2 Calibrating Status", ["home", "station", "type"]
 )
-TEMPERATURE = Gauge("netatmo_temperature", "The current Temperature", ["station", "module", "type"])
-MIN_TEMP = Gauge("netatmo_temperature_min", "The current Min Temperature", ["station", "module", "type"])
-MAX_TEMP = Gauge("netatmo_temperature_max", "The current Max Temperature", ["station", "module", "type"])
-TEMP_TREND = Gauge("netatmo_temperature_trend", "The current Temperature Trend", ["station", "module", "type"])
-HUMIDITY = Gauge("netatmo_humidity", "The current Humidity", ["station", "module", "type"])
-CO2 = Gauge("netatmo_co2", "The current CO2", ["station", "module", "type"])
-PRESSURE = Gauge("netatmo_pressure", "The current Pressure", ["station", "module", "type"])
-PRESSURE_TREND = Gauge("netatmo_pressure_trend", "The current Pressure Trend", ["station", "module", "type"])
-ABSOLUTEPRESSURE = Gauge("netatmo_absolute_pressure", "The current Absolute Pressure", ["station", "module", "type"])
-NOISE = Gauge("netatmo_noise", "The current Noise", ["station", "module", "type"])
-RF_STATUS = Gauge("netatmo_rf_status", "The current RF Status", ["station", "module", "type"])
-BATTERY_VP = Gauge("netatmo_battery_vp", "The current Battery VP", ["station", "module", "type"])
-BATTERY_PERCENT = Gauge("netatmo_battery_percent", "The current Battery Percent", ["station", "module", "type"])
-WINDANGLE = Gauge("netatmo_wind_angle", "The current Wind Angle", ["station", "module", "type"])
-WINDSTRENGTH = Gauge("netatmo_wind_strength", "The current Wind Strength", ["station", "module", "type"])
-MAX_WIND_ANGLE = Gauge("netatmo_wind_max_angle", "The current Wind Max Angle", ["station", "module", "type"])
-MAX_WIND_STR = Gauge("netatmo_wind_max_strength", "The current Wind Max Strength", ["station", "module", "type"])
-GUSTANGLE = Gauge("netatmo_gust_angle", "The current Gust Angle", ["station", "module", "type"])
-GUSTSTRENGTH = Gauge("netatmo_gust_strength", "The current Gust Strength", ["station", "module", "type"])
-RAIN = Gauge("netatmo_rain", "The current Rain", ["station", "module", "type"])
-SUM_RAIN_1 = Gauge("netatmo_rain_1h", "Rain over the last 1h", ["station", "module", "type"])
-SUM_RAIN_24 = Gauge("netatmo_rain_24h", "Rain over the last 24h", ["station", "module", "type"])
+TEMPERATURE = Gauge("netatmo_temperature", "The current Temperature", ["home", "station", "module", "type"])
+MIN_TEMP = Gauge("netatmo_temperature_min", "The current Min Temperature", ["home", "station", "module", "type"])
+MAX_TEMP = Gauge("netatmo_temperature_max", "The current Max Temperature", ["home", "station", "module", "type"])
+TEMP_TREND = Gauge("netatmo_temperature_trend", "The current Temperature Trend", ["home", "station", "module", "type"])
+HUMIDITY = Gauge("netatmo_humidity", "The current Humidity", ["home", "station", "module", "type"])
+CO2 = Gauge("netatmo_co2", "The current CO2", ["home", "station", "module", "type"])
+PRESSURE = Gauge("netatmo_pressure", "The current Pressure", ["home", "station", "module", "type"])
+PRESSURE_TREND = Gauge("netatmo_pressure_trend", "The current Pressure Trend", ["home", "station", "module", "type"])
+ABSOLUTEPRESSURE = Gauge(
+    "netatmo_absolute_pressure", "The current Absolute Pressure", ["home", "station", "module", "type"]
+)
+NOISE = Gauge("netatmo_noise", "The current Noise", ["home", "station", "module", "type"])
+RF_STATUS = Gauge("netatmo_rf_status", "The current RF Status", ["home", "station", "module", "type"])
+BATTERY_VP = Gauge("netatmo_battery_vp", "The current Battery VP", ["home", "station", "module", "type"])
+BATTERY_PERCENT = Gauge("netatmo_battery_percent", "The current Battery Percent", ["home", "station", "module", "type"])
+WINDANGLE = Gauge("netatmo_wind_angle", "The current Wind Angle", ["home", "station", "module", "type"])
+WINDSTRENGTH = Gauge("netatmo_wind_strength", "The current Wind Strength", ["home", "station", "module", "type"])
+MAX_WIND_ANGLE = Gauge("netatmo_wind_max_angle", "The current Wind Max Angle", ["home", "station", "module", "type"])
+MAX_WIND_STR = Gauge(
+    "netatmo_wind_max_strength", "The current Wind Max Strength", ["home", "station", "module", "type"]
+)
+GUSTANGLE = Gauge("netatmo_gust_angle", "The current Gust Angle", ["home", "station", "module", "type"])
+GUSTSTRENGTH = Gauge("netatmo_gust_strength", "The current Gust Strength", ["home", "station", "module", "type"])
+RAIN = Gauge("netatmo_rain", "The current Rain", ["home", "station", "module", "type"])
+SUM_RAIN_1 = Gauge("netatmo_rain_1h", "Rain over the last 1h", ["home", "station", "module", "type"])
+SUM_RAIN_24 = Gauge("netatmo_rain_24h", "Rain over the last 24h", ["home", "station", "module", "type"])
 
 
 class VerbosityLevel(Enum):
@@ -110,17 +116,19 @@ def shutdown(_signal):
     running = False
 
 
-def get_sensor_data(_sensor_data: dict, _station_name: str, _module_name: str, _module_type: str) -> None:
+def get_sensor_data(
+    _sensor_data: dict, _home_name: str, _station_name: str, _module_name: str, _module_type: str
+) -> None:
     if _sensor_data is not None:
         for _sensor, _value in _sensor_data.items():
             if _sensor in ["time_utc", "date_max_temp", "date_min_temp", "date_max_wind_str"]:
                 continue
             if _sensor in ["temp_trend", "pressure_trend"]:
-                globals()[_sensor.upper()].labels(_station_name, _module_name, _module_type).set(
+                globals()[_sensor.upper()].labels(_home_name, _station_name, _module_name, _module_type).set(
                     TrendState[_value.upper()].value
                 )
                 continue
-            globals()[_sensor.upper()].labels(_station_name, _module_name, _module_type).set(_value)
+            globals()[_sensor.upper()].labels(_home_name, _station_name, _module_name, _module_type).set(_value)
 
 
 if __name__ == "__main__":
@@ -184,6 +192,7 @@ if __name__ == "__main__":
 
             for station_id, station in stations.items():
                 log.debug(f"Station Data: {station}")
+                home_name = station.get("home_name", "Unknown")
                 station_name = station.get("station_name", "Unknown")
                 station_module_name = station.get("module_name", "Unknown")
                 station_module_type = station.get("type", "Unknown")
@@ -200,7 +209,7 @@ if __name__ == "__main__":
                 }
 
                 for key, value in station_data.items():
-                    globals()[f"STATION_{key.upper()}"].labels(station_name, station_module_type).set(value)
+                    globals()[f"STATION_{key.upper()}"].labels(home_name, station_name, station_module_type).set(value)
 
                 station_sensor_data = station.get("dashboard_data")
 
@@ -208,15 +217,15 @@ if __name__ == "__main__":
                     continue
 
                 STATION_REACHABLE.labels(
-                    station_name, station_module_type, station_city, station_country, station_timezone
+                    home_name, station_name, station_module_type, station_city, station_country, station_timezone
                 ).set(station.get("reachable"))
 
                 for sensor in ["wifi_status", "co2_calibrating"]:
-                    globals()[f"STATION_{sensor.upper()}"].labels(station_name, station_module_type).set(
+                    globals()[f"STATION_{sensor.upper()}"].labels(home_name, station_name, station_module_type).set(
                         station.get(sensor)
                     )
 
-                get_sensor_data(station_sensor_data, station_name, station_module_name, station_module_type)
+                get_sensor_data(station_sensor_data, home_name, station_name, station_module_name, station_module_type)
 
                 for module in station.get("modules", []):
                     log.debug(f"Module Data: {module}")
@@ -229,11 +238,11 @@ if __name__ == "__main__":
                         continue
 
                     for sensor in ["rf_status", "battery_vp", "battery_percent"]:
-                        globals()[f"{sensor.upper()}"].labels(station_name, module_name, module_type).set(
+                        globals()[f"{sensor.upper()}"].labels(home_name, station_name, module_name, module_type).set(
                             module.get(sensor)
                         )
 
-                    get_sensor_data(module_sensor_data, station_name, module_name, module_type)
+                    get_sensor_data(module_sensor_data, home_name, station_name, module_name, module_type)
         except (json.decoder.JSONDecodeError, requests.exceptions.JSONDecodeError) as error:
             log.error(f"JSON Decode Error. Retry in {interval} second(s)...")
             log.debug(error)
