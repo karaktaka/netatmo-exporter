@@ -1,4 +1,5 @@
-# netatmo-exporter
+> **Note:** This project has moved to [Codeberg](https://codeberg.org/karaktaka/netatmo-exporter).
+> This GitHub repository is no longer actively maintained.# netatmo-exporter
 
 ![pyatmo](./pyatmo.png)
 
